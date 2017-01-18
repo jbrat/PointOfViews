@@ -1,1 +1,37 @@
 /* Empty. Add your own CSS if you like */
+.backgroundHome {
+  background: url('../img/home.jpg') no-repeat fixed center;
+}
+
+.homeText {
+  text-align: center;
+  font-size: 33px;
+  color: white;
+  margin-top:15%;
+  line-height:30px;
+}
+
+.homeDescription {
+  color: white;
+  text-align: center;
+  font-size:18px;
+  margin-top:40%;
+}
+
+.buttonHomeLogin {
+  margin-top: 120%;
+  margin-left: 5%;
+  width:90%
+}
+
+.buttonHomeRegister {
+  margin-top: 10%;
+  margin-left: 5%;
+  width:90%
+}
+
+.errorMessage {
+  color: red;
+  font-size:14px;
+}
+

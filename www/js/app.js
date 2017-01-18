@@ -1,6 +1,20 @@
 // Ionic BlaBlaCar App
 
-var app = angular.module('PoV', ['ionic', 'PoV.controllers', 'PoV.routes', 'firebase', 'ngCordova']);
+var app = angular.module('PoV', ['ionic', 'PoV.controllers', 'PoV.routes', 'firebase', 'ngCordova'])
+  .factory('FirebaseInstance', function() {
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBTXtsn6OPrsws9SrRRsNevJuIf5FO0jsY",
+      authDomain: "pointofviews-3f1b0.firebaseapp.com",
+      databaseURL: "https://pointofviews-3f1b0.firebaseio.com",
+      storageBucket: "pointofviews-3f1b0.appspot.com",
+      messagingSenderId: "768228455889"
+    };
+
+    firebase.initializeApp(config);
+    
+    return firebase;
+  });
 
 app.value('user', {
   userName: '',

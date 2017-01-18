@@ -2,10 +2,14 @@
 <widget id="com.ionicframework.pov550316" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>PoV</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Application to consult a list of point of views and like their.
     </description>
-  <author email="you@example.com" href="http://example.com/">
-      Your Name Here
+  <author email="bratjulien@gmail.com" href="http://github.com/jbrat">
+      BRAT Julien
+      ABRIAL Kevin
+      BARTHELEMY ALEXIS
+      CHAMBON Clement
+      REMACI Arslen
     </author>
   <content src="index.html"/>
   <access origin="*"/>

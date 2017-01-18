@@ -1,0 +1,19 @@
+<ion-view view-title="Profil">
+  <ion-content>
+    <h1>Welcome to your profil</h1>
+
+    {{ user.userConnected.email }}
+    <button class="button button-block button-positive" ng-click="verifyEmail()" type="button">Verify your email</button>
+    <span class="errorMessage">{{ errorMessage }}</span>
+
+    <br><br>
+    <form ng-submit="updateDisplayName()">
+      <label class="item item-input">
+      <span class="input-label">Nickname :</span>
+      <input type="text" ng-model="user.displayName">
+    </label>
+
+      <button class="button button-block button-positive" type="submit">UPDATE</button>
+    </form>
+  </ion-content>
+</ion-view>

@@ -49,6 +49,16 @@ angular.module('PoV.routes', [])
           controller: 'LoginCtrl'
         }
       }
+    })
+
+    .state('app.profil', {
+      url: '/profil',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profil.html',
+          controller: 'ProfilCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

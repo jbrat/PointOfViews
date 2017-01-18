@@ -1,26 +1,22 @@
 <ion-view view-title="Login">
   <ion-content>
-    <div>
-      <label>Login Page : </label>
-    </div>
-    <form ng-submit="doLogin()">
+    <form ng-submit="submitLogin()">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Email :</span>
-          <input type="text" ng-model="data.email">
+          <input type="text" ng-model="user.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Password :</span>
-          <input type="password" ng-model="data.password">
+          <input type="password" ng-model="user.password">
         </label>
+        <span class="errorMessage">{{ errorMessage }}</span>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Log in</button>
-
         </label>
-
       </div>
     </form>
-    <button class="button button-bock button-positive" type="button" ng-click="facebookAuth()">FACEBOOK</button>
+    <button class="button button-bock button-positive" type="submit" ng-click="facebookAuth()">FACEBOOK</button>
     <button class="button button-bock button-positive" type="button" ng-click="forgotPassword()">Forgot password</button>
   </ion-content>
 </ion-view>

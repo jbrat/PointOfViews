@@ -12,15 +12,12 @@ var app = angular.module('PoV', ['ionic', 'PoV.controllers', 'PoV.routes', 'fire
     };
 
     firebase.initializeApp(config);
-    
+
     return firebase;
   });
 
 app.value('user', {
-  userName: '',
-  lastName:'',
-  firstName:'',
-  email: '',
+  userConnected: null,
   isLogin:false
 });
 

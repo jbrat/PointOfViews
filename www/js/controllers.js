@@ -1,23 +1,24 @@
 angular.module('PoV.controllers', [])
 
-  .controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, $ionicHistory, user) {
+  .controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, $ionicHistory, user, FirebaseInstance) {
     $scope.user = user;
 
     $scope.disconnect = function() {
-      user.isLogin = false;
-      user.lastName = "";
-      user.firstName = "";
-      user.email = "";
-      user.userName = "";
 
-      $ionicHistory.clearCache().then(function() {
-        //now you can clear history or goto another state if you need
-        $ionicHistory.clearHistory();
-        $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
-        $sate.go('app.home', {reload: true});
-      })
+      FirebaseInstance.auth().signOut().then(function(error) {
+        user.isLogin = false;
+        user.email = "";
+
+        $ionicHistory.clearCache().then(function() {
+          //now you can clear history or goto another state if you need
+          $ionicHistory.clearHistory();
+          $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+
+          $state.go('app.home', {reload: true});
+        })
+      });
     }
   });
 
 
- 
+

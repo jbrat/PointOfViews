@@ -14,21 +14,29 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Menu</h1>
+      <h1 class="title">Bonjour {{ user.userConnected.displayName }}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close href="#/app/home">
+          <i class="icon ion-home"></i>
+          Home
+        </ion-item>
+
+        <ion-item ng-show="user.isLogin" href="#/app/profil">
+          <i class="icon ion-person-stalker"></i>
+          Profil
+        </ion-item>
+        <ion-item ng-hide="user.isLogin" href="#/app/login">
+          <i class="icon ion-ios-locked"></i>
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item ng-click="disconnect()" ng-show="user.isLogin">
+          Logout
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/home">
-          Home
+        <ion-item href="#/app/register" ng-hide="user.isLogin">
+          <i class="icon ion-person-add"></i>
+          Register
         </ion-item>
       </ion-list>
     </ion-content>

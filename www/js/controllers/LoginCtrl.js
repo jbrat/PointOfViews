@@ -57,15 +57,17 @@ angular.module("PoV")
 
           if(errorCode == 'auth/user-not-found') {
             $scope.errorMessage = "Your account haven't be found";
-          }
-          if(errorCode == 'auth/auth/invalid-email') {
+          } else if(errorCode == 'auth/auth/invalid-email') {
             $scope.errorMessage = "The email isn't valid";
+          } else {
+            $scope.errorMessage = errorCode;
           }
           $state.go($state.current, {}, {reload: true});
         });
     }
 
     $scope.facebookAuth = function() {
+
       // Sign in using a popup.
       var provider = new FirebaseInstance.auth.FacebookAuthProvider();
       provider.addScope('email');
@@ -74,12 +76,34 @@ angular.module("PoV")
         var token = result.credential.accessToken;
         // The signed-in user info.
         user.userConnected = result.user;
-        console.log(user.userConnected);
+
+        user.isLogin = true;
+
+        $ionicHistory.clearCache().then(function() {
+          //now you can clear history or goto another state if you need
+          $ionicHistory.clearHistory();
+          $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+
+          $state.go('app.home', {reload: true});
+        });
+
       })
       .catch(function(error) {
         var errorCode = error.code;
         var errorMesssage = error.message;
-        console.log(errorCode+errorMesssage);
+
+        if(errorCode == 'auth/popup-blocked') {
+          $scope.errorMessage = "Your smartphone block the facebook popup authentification";
+        } else if(errorCode == 'auth/popup-closed-by-user') {
+          $scope.errorMessage = "You have closed the facebook connection window";
+        } else if(errorCode == 'auth/operation-not-allowed') {
+          $scope.errorMessage = "Your facebook account have been blocked by the administrator";
+        } else if(errorCode == 'auth/cancelled-popup-request') {
+          $scope.errorMessage = "Only one instance of connection facebook can be load";
+        } else {
+          $scope.errorMessage = errorCode;
+        }
+        $state.go($state.current, {}, {reload: true});
       });
     }
 

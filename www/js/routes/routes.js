@@ -59,6 +59,24 @@ angular.module('PoV.routes', [])
           controller: 'ProfilCtrl'
         }
       }
+    })
+    .state('app.search', {
+      url: '/search',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/search.html',
+          controller: 'SearchCtrl'
+        }
+      }
+    })
+    .state('app.geoloc', {
+      url: '/geoloc',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/geoloc.html',
+          controller: 'GeolocCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

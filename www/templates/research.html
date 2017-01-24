@@ -9,10 +9,10 @@
 
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
         <span class="input-label">Arrival :</span>
-          <input type="text" name="clear" ng-model="search.arrival" placeholder="Arrival...">
+          <input type="text" name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
       </label>
       <br/>
-      <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clear')[0].value = ''">Same as departure</ion-checkbox>
+      <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">Same as departure</ion-checkbox>
 
       <label class="item item-input">
         <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Hours

@@ -35,6 +35,7 @@
   font-size:14px;
 }
 
+<<<<<<< HEAD
 
 
 .animate-show-hide.ng-hide {
@@ -50,5 +51,14 @@
   border: 1px solid black;
   opacity: 1;
   padding: 10px;
+=======
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 100%;
+>>>>>>> 1b9753be374a2aef608456e31a41c15e2ef34b67
 }
 

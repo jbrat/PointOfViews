@@ -69,6 +69,15 @@ angular.module('PoV.routes', [])
         }
       }
     })
+    .state('app.research', {
+          url: '/research',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/research.html',
+              controller: 'ResearchCtrl'
+            }
+          }
+        })
     .state('app.geoloc', {
       url: '/geoloc',
       views: {

@@ -1,26 +1,12 @@
 angular.module("PoV")
 .controller('MapCtrl', function($scope, $ionicLoading) {
-  
-     google.maps.event.addDomListener(window, 'load', function() {
-         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
-  
-         var mapOptions = {
-             center: myLatlng,
-             zoom: 16,
-             mapTypeId: google.maps.MapTypeId.ROADMAP
-         };
-  
-         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  
-         navigator.geolocation.getCurrentPosition(function(pos) {
-             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-             var myLocation = new google.maps.Marker({
-                 position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                 map: map,
-             });
-         });
-  
-         $scope.map = map;
-     });
-  
+
+  $scope.initialize = function() {
+    var options = {timeout: 5000, enableHighAccuracy: true}; //Demande d'autorisation d'activitaion de la géolocalisation
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: {lat: 45.7772220, lng: 3.0870250}
+    });
+  }
  });

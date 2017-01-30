@@ -1,6 +1,7 @@
 angular.module("PoV")
 .controller('MapCtrl', function($scope, $ionicLoading, $cordovaGeolocation) {
 
+
   $scope.initialize = function() {
 
     var posOptions = {timeout: 10000, enableHighAccuracy: false};

@@ -1,14 +1,13 @@
 <ion-view view-title="Research">
-  <ion-content>
+  <ion-content ng-show="showResearhForm">
     <form ng-submit="research()">
-
       <label class="item item-input">
-        <span class="input-label">Departure :</span>
         <input type="text" ng-model="search.departure" placeholder="Departure...">
+        <i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i>
+        <i></i>
       </label>
 
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
-        <span class="input-label">Arrival :</span>
           <input type="text" name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
       </label>
       <br/>
@@ -21,8 +20,23 @@
         <input type="number" ng-model="search.distance" min="1" max="20" placeholder="Distance..." >km
       </label>
       <label class="item">
+        <ion-checkbox type="checkbox" ng-click="transport('car')"><img src="img/sports-car.png"></ion-checkbox>
+        <br>
+        <ion-checkbox type="checkbox"><img src="img/bike.png"></ion-checkbox>
+        <br>
+        <ion-checkbox type="checkbox"><img src="img/hiking.png"></ion-checkbox>
+        <br>
+        <ion-checkbox type="checkbox"><img src="img/front-bus.png"></ion-checkbox>
+      </label>
+      <label class="item">
         <button class="button button-block button-positive" type="submit">Validate</button>
       </label>
+      <label>
+        <p>{{ errorMessage }}</p>
+      </label>
     </form>
+  </ion-content>
+  <ion-content ng-hide="showResearhForm">
+    <div id="map" style="height: 100%; width: 100%;"></div>
   </ion-content>
 </ion-view>

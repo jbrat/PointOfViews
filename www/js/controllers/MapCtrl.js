@@ -1,5 +1,5 @@
 angular.module("PoV")
-.controller('MapCtrl', function($scope, $ionicLoading) {
+.controller('MapCtrl', function($scope) {
 
   $scope.initialize = function() {
     var options = {timeout: 5000, enableHighAccuracy: true}; //Demande d'autorisation d'activitaion de la géolocalisation

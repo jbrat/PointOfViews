@@ -4,24 +4,33 @@ angular.module("PoV")
 
   $scope.initialize = function() {
 
-    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    var posOptions = {timeout: 5000, enableHighAccuracy: true,  maximumAge:0};
     $cordovaGeolocation
           .getCurrentPosition(posOptions)
-          .then(function (position) {
+          .then(position => {
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
-            position = {
+            /*position = {
                     lat: lat,
                     long: long,
                     error: null
-            }
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: {lat: lat, lng: long}
-      });
-    console.log(position.lat + " "+position.long);
-    //map.setMyLocalionEnabled(true);
-    });
+            }*/
+
+            let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: latLng
+            });
+            //map.setCenter(latLng);
+            console.log(position.coords.latitude + " "+position.coords.longitude);
+            var marker = new google.maps.Marker({
+                        position:latLng,
+                        title:'Location',
+                        animation: google.maps.Animation.DROP,
+                        dragable:true
+                    });
+            marker.setMap(map);
+          });
 
 
   }

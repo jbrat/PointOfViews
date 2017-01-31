@@ -2,32 +2,39 @@
   <ion-content ng-show="showResearhForm">
     <form ng-submit="research()">
       <label class="item item-input">
-        <input type="text" ng-model="search.departure" placeholder="Departure...">
-        <i style="margin-left:10px;font-size:20px" ng-click="geolocCity()" class="icon ion-android-locate placeholder-icon"></i>
-        <i></i>
+        <input type="text" ng-model="search.departure" placeholder="Departure..." />
       </label>
+      <button class="button" type="button"  ng-click="geolocCity()">
+        <i class="icon ion-android-locate"></i>
+      </button>
 
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
           <input type="text" name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
       </label>
-      <br/>
+      <br />
       <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">Same as departure</ion-checkbox>
 
       <label class="item item-input">
         <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Hours
       </label>
       <label class="item item-input">
-        <input type="number" ng-model="search.distance" min="1" max="20" placeholder="Distance..." >km
+        <input type="number" ng-model="search.distance" min="1" max="50000" placeholder="Distance..." >Mètre
       </label>
-      <label class="item">
-        <ion-checkbox type="checkbox" ng-click="transport('car')"><img src="img/sports-car.png"></ion-checkbox>
-        <br>
-        <ion-checkbox type="checkbox"><img src="img/bike.png"></ion-checkbox>
-        <br>
-        <ion-checkbox type="checkbox"><img src="img/hiking.png"></ion-checkbox>
-        <br>
-        <ion-checkbox type="checkbox"><img src="img/front-bus.png"></ion-checkbox>
-      </label>
+      <ion-checkbox type="checkbox" ng-click="setTransport('driving')">
+        <img src="img/sports-car.png">
+      </ion-checkbox>
+      <br>
+      <ion-checkbox type="checkbox" ng-click="setTransport('bicycling')">
+        <img src="img/bike.png">
+      </ion-checkbox>
+      <br>
+      <ion-checkbox type="checkbox" ng-click="setTransport('walking')">
+        <img src="img/hiking.png">
+      </ion-checkbox>
+      <br>
+      <ion-checkbox type="checkbox" ng-click="setTransport('transit')">
+        <img src="img/front-bus.png">
+      </ion-checkbox>
       <label class="item">
         <button class="button button-block button-positive" type="submit">Validate</button>
       </label>
@@ -38,5 +45,6 @@
   </ion-content>
   <ion-content ng-hide="showResearhForm">
     <div id="map" style="height: 100%; width: 100%;"></div>
+    <p>{{ errorMessage }}</p>
   </ion-content>
 </ion-view>

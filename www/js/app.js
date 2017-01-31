@@ -21,6 +21,8 @@ app.value('user', {
   isLogin:false
 });
 
+app.value('GoogleAPIKey', 'AIzaSyAYD8ko6MKsOkBwVTDQlD1R5CJKRP7xGnA');
+
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

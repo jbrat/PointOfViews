@@ -1,37 +1,40 @@
 <ion-view view-title="Research">
   <ion-content ng-show="showResearhForm">
     <form ng-submit="research()">
+
+      <div class="right">
+        <button class="button" type="button"  ng-click="geolocCity()">
+          <i class="icon ion-android-locate"></i>
+        </button>
+      </div>
+
       <label class="item item-input">
-        <input type="text" ng-model="search.departure" placeholder="Departure..." />
+        <input type="text" ng-autocomplete ng-model="search.departure" placeholder="Departure..." />
       </label>
-      <button class="button" type="button"  ng-click="geolocCity()">
-        <i class="icon ion-android-locate"></i>
-      </button>
 
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
-          <input type="text" name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
+          <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
       </label>
-      <br />
       <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">Same as departure</ion-checkbox>
 
       <label class="item item-input" ng-show="search.clear">
         <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Min
       </label>
       <label class="item item-input" ng-show="search.clear">
-        <input type="number" ng-model="search.distance" min="1" max="50000" placeholder="Distance..." >Meters
-      </label>
+        <input type="number" ng-model="search.distance" min="1" max="50000" placeholder="Distance..." >Meters</label>
+      <br/>
       <ion-checkbox type="checkbox" ng-click="setTransport('driving')">
         <img src="img/sports-car.png">
       </ion-checkbox>
-      <br>
+
       <ion-checkbox type="checkbox" ng-click="setTransport('bicycling')">
         <img src="img/bike.png">
       </ion-checkbox>
-      <br>
+
       <ion-checkbox type="checkbox" ng-click="setTransport('walking')">
         <img src="img/hiking.png">
       </ion-checkbox>
-      <br>
+
       <ion-checkbox type="checkbox" ng-click="setTransport('transit')">
         <img src="img/front-bus.png">
       </ion-checkbox>

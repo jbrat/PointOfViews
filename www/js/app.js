@@ -1,6 +1,6 @@
 // Ionic BlaBlaCar App
 
-var app = angular.module('PoV', ['ionic', 'PoV.controllers', 'PoV.routes', 'firebase', 'ngCordova'])
+var app = angular.module('PoV', ['ionic', 'PoV.controllers', 'PoV.routes', 'firebase', 'ngAutocomplete', 'ngCordova'])
   .factory('FirebaseInstance', function() {
     // Initialize Firebase
     var config = {

@@ -14,11 +14,11 @@
       <br />
       <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">Same as departure</ion-checkbox>
 
-      <label class="item item-input">
-        <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Hours
+      <label class="item item-input" ng-show="search.clear">
+        <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Min
       </label>
-      <label class="item item-input">
-        <input type="number" ng-model="search.distance" min="1" max="50000" placeholder="Distance..." >Mètre
+      <label class="item item-input" ng-show="search.clear">
+        <input type="number" ng-model="search.distance" min="1" max="50000" placeholder="Distance..." >Meters
       </label>
       <ion-checkbox type="checkbox" ng-click="setTransport('driving')">
         <img src="img/sports-car.png">

@@ -31,7 +31,7 @@ angular.module('PoV.routes', [])
         }
       }
     })
-    
+
     .state('app.register', {
       url: '/register',
       views: {
@@ -87,6 +87,15 @@ angular.module('PoV.routes', [])
           controller: 'FilterCtrl'
         }
       }
+    })
+    .state('app.help', {
+          url: '/help',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/help.html',
+              controller: 'HelpCtrl'
+            }
+          }
     })
     .state('app.geoloc', {
       url: '/geoloc',

@@ -2,6 +2,9 @@
   <ion-content ng-show="showResearhForm">
     <form ng-submit="research()">
       <p class="textStyleBlack">Choose a departure and a arrival for your trip</p>
+      <ion-checkbox type="checkbox" ng-model="search.clear" qaria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">
+        <p class="textStyleBlack">Arrival same as departure</p>
+      </ion-checkbox>
       <div class="positionRight">
         <button class="button button-bock button-dark" type="button"  ng-click="geolocCity()">
           <i class="icon ion-android-locate"></i>
@@ -15,9 +18,7 @@
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
           <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
       </label>
-      <ion-checkbox type="checkbox" ng-model="search.clear" qaria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">
-        <p class="textStyleBlack">Arrival same as departure</p>
-      </ion-checkbox>
+
 
       <br/>
       <p class="textStyleBlue">Choose a time and a distance for your trip</p>
@@ -55,27 +56,27 @@
       <br/><br/>
       <p class="textStyleOrange">Filter</p>
       <ion-toggle ng-model="pov.airports" toggle-class="toggle-calm">Airports</ion-toggle>
-      <ion-toggle ng-model="pov.amusement_park" toggle-class="toggle-calm">Amusement_park</ion-toggle>
-      <ion-toggle ng-model="pov.art_gallery" toggle-class="toggle-calm">Art_gallery</ion-toggle>
+      <ion-toggle ng-model="pov.amusement_park" toggle-class="toggle-calm">Amusement park</ion-toggle>
+      <ion-toggle ng-model="pov.art_gallery" toggle-class="toggle-calm">Art gallery</ion-toggle>
       <ion-toggle ng-model="pov.bank" toggle-class="toggle-calm">Bank</ion-toggle>
       <ion-toggle ng-model="pov.bakery" toggle-class="toggle-calm">Bakery</ion-toggle>
       <ion-toggle ng-model="pov.bar" toggle-class="toggle-calm">Bar</ion-toggle>
-      <ion-toggle ng-model="pov.bicycle_store" toggle-class="toggle-calm">Bicycle_store</ion-toggle>
-      <ion-toggle ng-model="pov.book_store" toggle-class="toggle-calm">Book_store</ion-toggle>
+      <ion-toggle ng-model="pov.bicycle_store" toggle-class="toggle-calm">Bicycle store</ion-toggle>
+      <ion-toggle ng-model="pov.book_store" toggle-class="toggle-calm">Book store</ion-toggle>
       <ion-toggle ng-model="pov.cafe" toggle-class="toggle-calm">Cafe</ion-toggle>
       <ion-toggle ng-model="pov.casino" toggle-class="toggle-calm">Casino</ion-toggle>
-      <ion-toggle ng-model="pov.clothing_store" toggle-class="toggle-calm">Clothing_store</ion-toggle>
+      <ion-toggle ng-model="pov.clothing_store" toggle-class="toggle-calm">Clothing store</ion-toggle>
       <ion-toggle ng-model="pov.establishement" toggle-class="toggle-calm">Establishement</ion-toggle>
       <ion-toggle ng-model="pov.food" toggle-class="toggle-calm">Food</ion-toggle>
       <ion-toggle ng-model="pov.gym" toggle-class="toggle-calm">Gym</ion-toggle>
       <ion-toggle ng-model="pov.hospital" toggle-class="toggle-calm">Hospital</ion-toggle>
-      <ion-toggle ng-model="pov.jewelry_story" toggle-class="toggle-calm">Jewelry_store</ion-toggle>
+      <ion-toggle ng-model="pov.jewelry_story" toggle-class="toggle-calm">Jewelry store</ion-toggle>
       <ion-toggle ng-model="pov.library" toggle-class="toggle-calm">Library</ion-toggle>
       <ion-toggle ng-model="pov.musuem" toggle-class="toggle-calm">Musuem</ion-toggle>
       <ion-toggle ng-model="pov.pharmacy" toggle-class="toggle-calm">Pharmacy</ion-toggle>
       <ion-toggle ng-model="pov.restaurant" toggle-class="toggle-calm">Restaurant</ion-toggle>
-      <ion-toggle ng-model="pov.shoe_store" toggle-class="toggle-calm">Shoe_store</ion-toggle>
-      <ion-toggle ng-model="pov.shopping_mall" toggle-class="toggle-calm">Shopping_mall</ion-toggle>
+      <ion-toggle ng-model="pov.shoe_store" toggle-class="toggle-calm">Shoe store</ion-toggle>
+      <ion-toggle ng-model="pov.shopping_mall" toggle-class="toggle-calm">Shopping mall</ion-toggle>
       <ion-toggle ng-model="pov.store" toggle-class="toggle-calm">Store</ion-toggle>
 
 

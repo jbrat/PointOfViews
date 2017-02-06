@@ -2,6 +2,18 @@
   background: url('../img/home.jpg') no-repeat fixed center;
 }
 
+.backgroundSlide1 {
+  background: url('../img/help_slide_1.jpg') no-repeat fixed center;
+}
+
+.backgroundSlide2 {
+  background: url('../img/help_slide_2.jpg') no-repeat fixed center;
+}
+
+.backgroundSlide3 {
+  background: url('../img/help_slide_3.jpg') no-repeat fixed center;
+}
+
 .logoFacebook {
   background: url('../img/logoFacebook.png') no-repeat fixed center;
 }

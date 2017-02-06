@@ -105,35 +105,51 @@ angular.module("PoV")
         // Calculate google direction
         calculateDirection($scope.search.departure, $scope.search.arrival, $scope.search.transport, null).then(function(direction) {
             directionsDisplay.setDirections(direction);
-
-            var steps = direction.routes[0].legs[0].steps;
-
-            angular.forEach(steps, function(point) {
-
-               var positionPoint = point.end_location;
-
-               var request = {
-               location: positionPoint,
-               radius: 2000,
-               types: getGoogleTypesCategorieSelected()
-               };
-
-               var service = new google.maps.places.PlacesService(map);
-
-               service.nearbySearch(request, function (results, status) {
-                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                 angular.forEach(results, function (item) {
-                  createMarker(map, item);
-                 });
-
-                 } else {
-                   $scope.errorMessage = "An error attempt when we try to load the different places";
-                   $state.go($state.current, {}, {reload: true});
-                 }
-               });
-            });
         });
 
+        var currentMarker = new google.maps.Marker({
+          map: map,
+          title: "your position",
+          icon: "img/suv.png"
+        });
+
+        var watchOptions = {
+          timeout : 10000,
+          enableHighAccuracy: true
+        };
+
+        $cordovaGeolocation.watchPosition(watchOptions)
+          .then(
+            null,
+            function(error) {
+              alert("An error attempt when we try to get your current position");
+            },
+            function(position) {
+              var currentPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+              currentMarker.setPosition(currentPosition);
+
+              map.setCenter(currentPosition);
+
+              var request = {
+                location: currentPosition,
+                radius: 5000,
+                types: getGoogleTypesCategorieSelected()
+              };
+
+              var service = new google.maps.places.PlacesService(map);
+
+              // PRINT ALL PLACE
+              service.nearbySearch(request, function(results, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                  angular.forEach(results, function(item) {
+                    createMarker(map, item);
+                  });
+                } else {
+                  alert("An error attempt when we try to load the different places");
+                }
+              });
+            }
+          );
       } else {
 
         if($scope.search.distance == null || $scope.search.distance == "") {
@@ -183,6 +199,27 @@ angular.module("PoV")
               $state.go($state.current, {}, {reload: true});
             }
           });
+
+          var currentMarker = new google.maps.Marker({
+            map: map,
+            title: "your position",
+            icon: "img/suv.png"
+          });
+
+          var watchOptions = {
+            timeout : 10000,
+            enableHighAccuracy: true
+          };
+
+          $cordovaGeolocation.watchPosition(watchOptions)
+            .then(
+              null,
+              function(error) {
+                alert("An error attempt when we try to get your current position");
+              },
+              function(position) {
+                currentMarker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+              });
         });
       }
     }

@@ -14,7 +14,9 @@
       <label class="item item-input">
         <input type="text" ng-autocomplete ng-model="search.departure" placeholder="Departure..." />
       </label>
-
+      <label>
+        <p class="errorMessage">{{ errorMessage }}</p>
+      </label>
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
           <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
       </label>
@@ -60,13 +62,10 @@
       <label class="item">
         <button class="button button-block button-positive" type="submit">Validate</button>
       </label>
-      <label>
-        <p>{{ errorMessage }}</p>
-      </label>
     </form>
   </ion-content>
   <ion-content ng-hide="showResearhForm">
     <div id="map" style="height: 100%; width: 100%;"></div>
-    <p>{{ errorMessage }}</p>
+    <p class="errorMessage">{{ errorMessage }}</p>
   </ion-content>
 </ion-view>

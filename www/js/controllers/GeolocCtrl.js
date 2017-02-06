@@ -17,7 +17,8 @@ angular.module("PoV")
 
         var marker = new google.maps.Marker({
           map: map,
-          position: position
+          position: position,
+          icon : "img/marker_localisation.png"
         });
 
         $scope.showMap = true;

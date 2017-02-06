@@ -1,7 +1,6 @@
 /**
  * Created by julien on 19/01/17.
  */
-
 angular.module("PoV")
   .controller('GeolocCtrl', function($scope, $state, $cordovaGeolocation, $ionicHistory) {
 
@@ -9,27 +8,21 @@ angular.module("PoV")
     $cordovaGeolocation
       .getCurrentPosition(posOptions)
       .then(function (position) {
-        var lat  = position.coords.latitude;
-        var long = position.coords.longitude;
+        var position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        position = {
-          lat: lat,
-          long: long,
-          error: null
-        }
-        
-        $scope.position = position;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: position
+        });
 
+        var marker = new google.maps.Marker({
+          map: map,
+          position: position
+        });
+
+        $scope.showMap = true;
       }, function(err) {
-        position = {
-          lat: null,
-          long: null,
-          error: err
-        };
-
-        $scope.position = position;
+        $scope.errorMessage = "An error attempt, we can't load your actual position";
+        $scope.showMap = false;
       });
-
-
-
   });

@@ -79,15 +79,6 @@ angular.module('PoV.routes', [])
             }
           }
     })
-    .state('app.filter', {
-      url: '/filter',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/filter.html',
-          controller: 'FilterCtrl'
-        }
-      }
-    })
     .state('app.help', {
           url: '/help',
           views: {

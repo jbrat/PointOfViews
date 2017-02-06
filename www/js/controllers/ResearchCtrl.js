@@ -18,68 +18,74 @@ angular.module("PoV")
     $scope.typePlaces = [
     {
       gName: 'airports',
-      printName :'Airports'
+      printName :'Airports',
+      status: true
     },
     {
       gName: 'amusement_park',
-      printName: 'Amusement park'
+      printName: 'Amusement park',
+      status: true
     },
     {
       gName: 'art_gallery',
-      printName: 'Art gallery'
+      printName: 'Art gallery',
+      status: true
     },
     {
       gName: 'bakery',
-      printName: 'Bakery'
+      printName: 'Bakery',
+      status: true
     },
     {
       gName: 'bar',
-      printName: 'Bar'
+      printName: 'Bar',
+      status: true
     },
     {
       gName: 'cafe',
-      printName: 'Cafe'
+      printName: 'Cafe',
+      status: true
     },
     {
       gName: 'casino',
-      printName: 'Casino'
+      printName: 'Casino',
+      status: true
     },
     {
       gName: 'establishement',
-      printName: 'Establishement'
+      printName: 'Establishement',
+      status: true
     },
     {
       gName: 'food',
-      printName: 'Food'
+      printName: 'Food',
+      status: true
     },
     {
       gName: 'library',
-      printName: 'Library'
+      printName: 'Library',
+      status: true
     },
     {
       gName: 'musuem',
-      printName: 'Musuem'
+      printName: 'Musuem',
+      status: true
     },
     {
       gName: 'pharmacy',
-      printName: 'Pharmacy'
+      printName: 'Pharmacy',
+      status: true
     },
     {
       gName: 'restaurant',
-      printName: 'Restaurant'
+      printName: 'Restaurant',
+      status: true
     },
     {
       gName: 'store',
-      printName: 'Store'
+      printName: 'Store',
+      status: true
     }];
-
-    $scope.setTypePlaces = function(type) {
-      if(typePlaces.indexOf(type) == -1) {
-        typePlaces.push(type);
-      } else {
-        typePlaces.splice(typePlaces.indexOf(type),1);
-      }
-    }
 
     $scope.research = function() {
 
@@ -109,7 +115,7 @@ angular.module("PoV")
                var request = {
                location: positionPoint,
                radius: 2000,
-               types: ['store', 'aquarium', 'art_gallery', 'museum', 'stadium', 'restaurant', 'bar']
+               types: getGoogleTypesCategorieSelected()
                };
 
                var service = new google.maps.places.PlacesService(map);
@@ -146,7 +152,7 @@ angular.module("PoV")
           var request = {
             location: position,
             radius: $scope.search.distance,
-            types: ['store', 'aquarium', 'art_gallery', 'museum', 'stadium', 'restaurant', 'bar']
+            types: getGoogleTypesCategorieSelected()
           };
 
           var service = new google.maps.places.PlacesService(map);
@@ -209,6 +215,23 @@ angular.module("PoV")
      $scope.search.transport = type;
     }
 
+    /**
+     * Method to get the types which are currently selected
+     *
+     * @return Array of strings google types
+     */
+    function getGoogleTypesCategorieSelected() {
+
+      var typesSelected = [];
+
+      angular.forEach($scope.typePlaces, function(itemType) {
+        if(itemType.status) {
+          typesSelected.push(itemType.gName);
+        }
+      });
+
+      return typesSelected;
+    }
 
     /**
      * Method to get the current location with cordova plugin

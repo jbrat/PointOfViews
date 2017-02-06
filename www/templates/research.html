@@ -1,9 +1,9 @@
 <ion-view view-title="Research">
   <ion-content ng-show="showResearhForm">
     <form ng-submit="research()">
-
-      <div class="right">
-        <button class="button" type="button"  ng-click="geolocCity()">
+      <p class="textStyleBlack">Choose a departure and a arrival for your trip</p>
+      <div class="positionRight">
+        <button class="button button-bock button-dark" type="button"  ng-click="geolocCity()">
           <i class="icon ion-android-locate"></i>
         </button>
       </div>
@@ -13,35 +13,75 @@
       </label>
 
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
-          <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival...">
+          <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
       </label>
-      <br/>
-      <label class="item item-input">
-        <input type="number" ng-model="search.time" min="1" max="12" placeholder="Time..." >Hours
-      </label>
-      <label class="item item-input">
-        <input type="number" ng-model="search.distance" min="100" max="50000" placeholder="Distance..." >Meters
-      </label>
-      <br/><br/>
-      <ion-checkbox type="checkbox" ng-model="search.clear" aria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">
-        Same as departure
+
+      <ion-checkbox type="checkbox" ng-model="search.clear" qaria-label="Toggle ngHide" onclick="getElementsByName('clearInput')[0].value = ''">
+        <p class="textStyleBlack">Arrival same as departure</p>
       </ion-checkbox>
+
       <br/>
-      <ion-checkbox type="checkbox" ng-click="setTransport('driving')">
+      <p class="textStyleBlue">Choose a time and a distance for your trip</p>
+      <label class="item item-input">
+        <input type="range" ng-model="search.time" min="1" max="12" placeholder="Time..." value="0" oninput="document.getElementById('AfficheTime').textContent=value" />
+        &nbsp;<span id="AfficheTime">0</span>&nbsp;Hours
+      </label>
+      <br/>
+      <label class="item item-input">
+        <input type="range" ng-model="search.distance" min="100" max="50000" step="100" placeholder="Distance..." value="0" oninput="document.getElementById('AfficheDistance').textContent=value" />
+        &nbsp;<span id="AfficheDistance">0</span>&nbsp;Meters
+      </label>
+
+      <br/>
+      <br/>
+
+      <p class="textStyleGreen">Choose the transport</p>
+      <div>
+      <ion-checkbox type="checkbox" ng-model="search.checkedCar" ng-disabled=" (search.checkedBus||search.checkedWalk||search.checkedBike) ?  true : false"  ng-click="setTransport('driving')" class="positionLeft positionTransport">
         <img src="img/sports-car.png">
       </ion-checkbox>
 
-      <ion-checkbox type="checkbox" ng-click="setTransport('bicycling')">
-        <img src="img/bike.png">
+      <ion-checkbox type="checkbox" ng-model="search.checkedBus" ng-disabled=" (search.checkedCar||search.checkedWalk||search.checkedBike) ?  true : false"  ng-click="setTransport('transit')">
+        <img src="img/front-bus.png">
       </ion-checkbox>
+      </div>
 
-      <ion-checkbox type="checkbox" ng-click="setTransport('walking')">
+      <div>
+      <ion-checkbox type="checkbox" ng-model="search.checkedWalk" ng-disabled=" (search.checkedCar||search.checkedBus||search.checkedBike) ?  true : false"  ng-click="setTransport('walking')" class="positionLeft positionTransport">
         <img src="img/hiking.png">
       </ion-checkbox>
 
-      <ion-checkbox type="checkbox" ng-click="setTransport('transit')">
-        <img src="img/front-bus.png">
+      <ion-checkbox type="checkbox" ng-model="search.checkedBike" ng-disabled=" (search.checkedCar||search.checkedWalk||search.checkedBus) ?  true : false"  ng-click="setTransport('bicycling')">
+        <img src="img/bike.png">
       </ion-checkbox>
+      </div>
+      <br/><br/>
+      <p class="textStyleOrange">Filter</p>
+      <ion-toggle ng-model="pov.airports" toggle-class="toggle-calm">Airports</ion-toggle>
+      <ion-toggle ng-model="pov.amusement_park" toggle-class="toggle-calm">Amusement_park</ion-toggle>
+      <ion-toggle ng-model="pov.art_gallery" toggle-class="toggle-calm">Art_gallery</ion-toggle>
+      <ion-toggle ng-model="pov.bank" toggle-class="toggle-calm">Bank</ion-toggle>
+      <ion-toggle ng-model="pov.bakery" toggle-class="toggle-calm">Bakery</ion-toggle>
+      <ion-toggle ng-model="pov.bar" toggle-class="toggle-calm">Bar</ion-toggle>
+      <ion-toggle ng-model="pov.bicycle_store" toggle-class="toggle-calm">Bicycle_store</ion-toggle>
+      <ion-toggle ng-model="pov.book_store" toggle-class="toggle-calm">Book_store</ion-toggle>
+      <ion-toggle ng-model="pov.cafe" toggle-class="toggle-calm">Cafe</ion-toggle>
+      <ion-toggle ng-model="pov.casino" toggle-class="toggle-calm">Casino</ion-toggle>
+      <ion-toggle ng-model="pov.clothing_store" toggle-class="toggle-calm">Clothing_store</ion-toggle>
+      <ion-toggle ng-model="pov.establishement" toggle-class="toggle-calm">Establishement</ion-toggle>
+      <ion-toggle ng-model="pov.food" toggle-class="toggle-calm">Food</ion-toggle>
+      <ion-toggle ng-model="pov.gym" toggle-class="toggle-calm">Gym</ion-toggle>
+      <ion-toggle ng-model="pov.hospital" toggle-class="toggle-calm">Hospital</ion-toggle>
+      <ion-toggle ng-model="pov.jewelry_story" toggle-class="toggle-calm">Jewelry_store</ion-toggle>
+      <ion-toggle ng-model="pov.library" toggle-class="toggle-calm">Library</ion-toggle>
+      <ion-toggle ng-model="pov.musuem" toggle-class="toggle-calm">Musuem</ion-toggle>
+      <ion-toggle ng-model="pov.pharmacy" toggle-class="toggle-calm">Pharmacy</ion-toggle>
+      <ion-toggle ng-model="pov.restaurant" toggle-class="toggle-calm">Restaurant</ion-toggle>
+      <ion-toggle ng-model="pov.shoe_store" toggle-class="toggle-calm">Shoe_store</ion-toggle>
+      <ion-toggle ng-model="pov.shopping_mall" toggle-class="toggle-calm">Shopping_mall</ion-toggle>
+      <ion-toggle ng-model="pov.store" toggle-class="toggle-calm">Store</ion-toggle>
+
+
       <label class="item">
         <button class="button button-block button-positive" type="submit">Validate</button>
       </label>

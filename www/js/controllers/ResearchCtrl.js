@@ -8,7 +8,37 @@ angular.module("PoV")
       time: '',
       clear: '',
       distance: '',
+      checkedCar: '',
+      checkedBus: '',
+      checkedWalk: '',
+      checkedBike: '',
       transport: 'driving'
+    };
+
+    $scope.pov = {
+      airports : true,
+      amusement_park : true,
+      art_gallery : true,
+      bank : true,
+      bakery : true,
+      bar : true,
+      bicycle_store : true,
+      book_store : true,
+      cafe : true,
+      casino : true,
+      clothing_store : true,
+      establishement : true,
+      food : true,
+      gym : true,
+      hospital : true,
+      jewelry_story : true,
+      library : true,
+      musuem : true,
+      pharmacy : true,
+      restaurant : true,
+      shoe_store : true,
+      shopping_mall : true,
+      store : true
     };
 
     $scope.research = function() {

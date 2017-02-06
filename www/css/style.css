@@ -1,6 +1,9 @@
-/* Empty. Add your own CSS if you like */
 .backgroundHome {
   background: url('../img/home.jpg') no-repeat fixed center;
+}
+
+.logoFacebook {
+  background: url('../img/logoFacebook.png') no-repeat fixed center;
 }
 
 .homeText {
@@ -45,9 +48,7 @@
 }
 
 .check-element {
-  border: 1px solid black;
-  opacity: 1;
-  padding: 10px;
+  width: 380px;
 }
 
 .scroll {
@@ -59,7 +60,55 @@
   width: 100%;
 }
 
-.right{
-     text-align: right;
+.positionTransport{
+  width: 175px;
 }
 
+#lienForget{
+  text-decoration: underline;
+  margin-left: 100px;
+  font-weight: bold;
+}
+
+
+.positionRight{
+  float: right;
+}
+
+.positionLeft{
+  float: left;
+}
+
+
+
+.textStyleBlue{
+  color: #87CEEB;
+  word-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.textStyleBlack{
+  color: grey;
+  word-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.textStyleGreen{
+  color: #B0F2B6;
+  word-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.textStyleOrange{
+  color: salmon;
+  word-spacing: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#colorFacebook{
+  background-color: 3b5998;
+}

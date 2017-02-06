@@ -15,31 +15,71 @@ angular.module("PoV")
       transport: 'driving'
     };
 
-    $scope.pov = {
-      airports : true,
-      amusement_park : true,
-      art_gallery : true,
-      bank : true,
-      bakery : true,
-      bar : true,
-      bicycle_store : true,
-      book_store : true,
-      cafe : true,
-      casino : true,
-      clothing_store : true,
-      establishement : true,
-      food : true,
-      gym : true,
-      hospital : true,
-      jewelry_story : true,
-      library : true,
-      musuem : true,
-      pharmacy : true,
-      restaurant : true,
-      shoe_store : true,
-      shopping_mall : true,
-      store : true
-    };
+    $scope.typePlaces = [
+    {
+      gName: 'airports',
+      printName :'Airports'
+    },
+    {
+      gName: 'amusement_park',
+      printName: 'Amusement park'
+    },
+    {
+      gName: 'art_gallery',
+      printName: 'Art gallery'
+    },
+    {
+      gName: 'bakery',
+      printName: 'Bakery'
+    },
+    {
+      gName: 'bar',
+      printName: 'Bar'
+    },
+    {
+      gName: 'cafe',
+      printName: 'Cafe'
+    },
+    {
+      gName: 'casino',
+      printName: 'Casino'
+    },
+    {
+      gName: 'establishement',
+      printName: 'Establishement'
+    },
+    {
+      gName: 'food',
+      printName: 'Food'
+    },
+    {
+      gName: 'library',
+      printName: 'Library'
+    },
+    {
+      gName: 'musuem',
+      printName: 'Musuem'
+    },
+    {
+      gName: 'pharmacy',
+      printName: 'Pharmacy'
+    },
+    {
+      gName: 'restaurant',
+      printName: 'Restaurant'
+    },
+    {
+      gName: 'store',
+      printName: 'Store'
+    }];
+
+    $scope.setTypePlaces = function(type) {
+      if(typePlaces.indexOf(type) == -1) {
+        typePlaces.push(type);
+      } else {
+        typePlaces.splice(typePlaces.indexOf(type),1);
+      }
+    }
 
     $scope.research = function() {
 
@@ -90,7 +130,7 @@ angular.module("PoV")
 
       } else {
 
-        if($scope.search.distance == null) {
+        if($scope.search.distance == null || $scope.search.distance == "") {
           $scope.search.distance = 10000;
         }
 

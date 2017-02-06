@@ -54,29 +54,7 @@
       </div>
       <br/><br/>
       <p class="textStyleOrange">Filter</p>
-      <ion-toggle ng-model="pov.airports" toggle-class="toggle-calm">Airports</ion-toggle>
-      <ion-toggle ng-model="pov.amusement_park" toggle-class="toggle-calm">Amusement_park</ion-toggle>
-      <ion-toggle ng-model="pov.art_gallery" toggle-class="toggle-calm">Art_gallery</ion-toggle>
-      <ion-toggle ng-model="pov.bank" toggle-class="toggle-calm">Bank</ion-toggle>
-      <ion-toggle ng-model="pov.bakery" toggle-class="toggle-calm">Bakery</ion-toggle>
-      <ion-toggle ng-model="pov.bar" toggle-class="toggle-calm">Bar</ion-toggle>
-      <ion-toggle ng-model="pov.bicycle_store" toggle-class="toggle-calm">Bicycle_store</ion-toggle>
-      <ion-toggle ng-model="pov.book_store" toggle-class="toggle-calm">Book_store</ion-toggle>
-      <ion-toggle ng-model="pov.cafe" toggle-class="toggle-calm">Cafe</ion-toggle>
-      <ion-toggle ng-model="pov.casino" toggle-class="toggle-calm">Casino</ion-toggle>
-      <ion-toggle ng-model="pov.clothing_store" toggle-class="toggle-calm">Clothing_store</ion-toggle>
-      <ion-toggle ng-model="pov.establishement" toggle-class="toggle-calm">Establishement</ion-toggle>
-      <ion-toggle ng-model="pov.food" toggle-class="toggle-calm">Food</ion-toggle>
-      <ion-toggle ng-model="pov.gym" toggle-class="toggle-calm">Gym</ion-toggle>
-      <ion-toggle ng-model="pov.hospital" toggle-class="toggle-calm">Hospital</ion-toggle>
-      <ion-toggle ng-model="pov.jewelry_story" toggle-class="toggle-calm">Jewelry_store</ion-toggle>
-      <ion-toggle ng-model="pov.library" toggle-class="toggle-calm">Library</ion-toggle>
-      <ion-toggle ng-model="pov.musuem" toggle-class="toggle-calm">Musuem</ion-toggle>
-      <ion-toggle ng-model="pov.pharmacy" toggle-class="toggle-calm">Pharmacy</ion-toggle>
-      <ion-toggle ng-model="pov.restaurant" toggle-class="toggle-calm">Restaurant</ion-toggle>
-      <ion-toggle ng-model="pov.shoe_store" toggle-class="toggle-calm">Shoe_store</ion-toggle>
-      <ion-toggle ng-model="pov.shopping_mall" toggle-class="toggle-calm">Shopping_mall</ion-toggle>
-      <ion-toggle ng-model="pov.store" toggle-class="toggle-calm">Store</ion-toggle>
+      <ion-toggle ng-repeat="type in typePlaces" toggle-class='toggle-calm' ng-change="setTypePlaces(type.gName)"> {{ type.printName }}</ion-toggle>
 
 
       <label class="item">

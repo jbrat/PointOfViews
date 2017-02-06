@@ -11,12 +11,13 @@ angular.module("PoV")
       .then(function (position) {
         var lat  = position.coords.latitude;
         var long = position.coords.longitude;
-alert(lat+long);
+
         position = {
           lat: lat,
           long: long,
           error: null
         }
+        
         $scope.position = position;
 
       }, function(err) {

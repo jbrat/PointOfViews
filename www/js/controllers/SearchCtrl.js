@@ -8,49 +8,40 @@ angular.module("PoV")
       word: ''
     };
 
-$scope.searchInformations = function() {
+  $scope.searchInformations = function(){
 
-  var wolfram = require('wolfram-alpha').createClient("KU9A6E-8UYUE9ETTG", opts);
+      // load filter options from localStorage
+      records = JSON.parse(localStorage.getItem('records'));
+      if (records == null) {
+        records = {
+          food: true,
+          shops: false,
+          outdoors: false
+        };
+        localStorage.setItem('records', JSON.stringify(records));
+      }
 
-  wolfram.query($scope.search.word, function (err, result) {
-    if (err) throw err;
-    console.log("Result: %j", result);
-  });
-}
+      // create the category array
+      var category= [];
+      if (records.food) category.push('food');
+      if (records.shops) category.push('shops');
+      if (records.outdoors) category.push('outdoors');
 
-
-/*$scope.searchInformations = function() {
-      console.log($scope.search.word);
-            $http({
-            method: 'JSONP',
-            url: 'http://api.wolframalpha.com/v2/query?input='+ $scope.search.word + "&appid=KU9A6E-8UYUE9ETTG",
-            callback: 'JSON_CALLBACK',
-            format: 'jsonp'
-            })
-            .success(function(data){
-             console.log("Sucess");
-              var x2js = new X2JS();
-              var jsonObj = x2js.xml2json(data);
-              console.log(jsonObj);
-             })
-            .error(function(data) {
-              console.log(data);
-             })
-
-    }*/
-
-    /*$scope.searchInformations = function() {
-      console.log($scope.search.word);
-            $http.get("http://api.wolframalpha.com/v2/query?input="+
-            $scope.search.word + "&appid=KU9A6E-8UYUE9ETTG")
-            .success(function(data){
-              console.log(data);
-              })
-            .error(function(data) {
-              console.log(data);
-              })
-
-    }*/
-
-
+      $http.get(
+        "https://api.foursquare.com/v2/venues/explore/?near=" +
+        $scope.search.word  +
+        "&venuePhotos=1&section=" +
+        category.join(',') +
+        "&client_id=" + "HIVPXSYJDK1FLFSSJHCREMFOO34OAFQPGRIWT42EFMLQXW03" +
+        "&client_secret=" + "W3P4YQZKFSCUFKUOFAVJFF0XMD1AXTCFUG0UFOQGCNPFMHF1" +
+        " &v=20131124"
+      )
+      .success(function(data){
+                    console.log("Sucess");
+                    console.log(data);
+                    }
+       ).error(function(data) {
+                     console.log("Error");
+                    })
+    };
   });

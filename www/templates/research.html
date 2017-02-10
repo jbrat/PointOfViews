@@ -17,9 +17,16 @@
       <label>
         <p class="errorMessage">{{ errorMessage }}</p>
       </label>
+      <div class="positionRight">
+        <button class="button button-bock button-dark" type="button"  ng-click="geolocCity()">
+          <i class="icon ion-android-locate"></i>
+        </button>
+      </div>
       <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
-          <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
+        <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
       </label>
+
+
       <br/>
       <div ng-show="search.clear">
        <!-- <p class="textStyleBlue">Choose a time and a distance for your trip</p>

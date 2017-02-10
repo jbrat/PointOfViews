@@ -18,31 +18,48 @@
   background: url('../img/logoFacebook.png') no-repeat fixed center;
 }
 
-.homeText {
-  text-align: center;
-  font-size: 33px;
-  color: white;
-  margin-top:15%;
-  line-height:30px;
-}
-
 .homeDescription {
   color: white;
   text-align: center;
   font-size:18px;
-  margin-top:40%;
+  margin-top: 40%;
+
+}
+
+.homeLoginSignIn {
+  text-align: center;
+  font-size: 33px;
+  color: white;
+  margin-top: 1%;
+}
+
+.homeLast  {
+  text-align: center;
+  font-size:18px;
+  margin-top: 1%;
+
+
+}
+
+#homeLastSignIn {
+  text-decoration: underline;
+  color: white;
 }
 
 .buttonHomeLogin {
-  margin-top: 120%;
+  margin-top: 20%;
   margin-left: 5%;
-  width:90%
+  width:90%;
 }
 
 .buttonHomeRegister {
   margin-top: 10%;
   margin-left: 5%;
   width:90%
+}
+
+.homeLast {
+ margin-top: 8%;
 }
 
 .errorMessage {
@@ -76,12 +93,11 @@
   width: 175px;
 }
 
-#lienForget{
+#linkForget{
   text-decoration: underline;
-  margin-left: 100px;
+  text-align: center;
   font-weight: bold;
 }
-
 
 .positionRight{
   float: right;

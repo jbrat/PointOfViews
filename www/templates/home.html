@@ -11,7 +11,7 @@
           <a class="button button-positive buttonHomeRegister" ng-hide="user.isLogin" href="#/app/register">Sign in</a>
           </div>
           <div class="homeLast">
-            <a id="homeLastSignIn" ng-click="linkGuess()">Sign in later</a>
+            <a id="homeLastSignIn" ng-hide="user.isLogin" ng-click="linkGuess()">Sign in later</a>
           </div>
         </ion-content>
       </ion-view>

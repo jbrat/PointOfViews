@@ -79,15 +79,6 @@ angular.module('PoV.routes', [])
             }
           }
     })
-    .state('app.help', {
-          url: '/help',
-          views: {
-            'menuContent': {
-              templateUrl: 'templates/help.html',
-              controller: 'HelpCtrl'
-            }
-          }
-    })
     .state('app.geoloc', {
       url: '/geoloc',
       views: {

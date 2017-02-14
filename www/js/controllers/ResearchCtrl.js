@@ -15,6 +15,8 @@ angular.module("PoV")
       transport: 'driving'
     };
 
+
+
     $scope.typePlaces = [
     {
       gName: 'airports',
@@ -86,6 +88,23 @@ angular.module("PoV")
       printName: 'Store',
       status: true
     }];
+
+    $scope.typePlace = {
+      amusement_park : true,
+      art_gallery: true,
+      casino: true,
+      library: true,
+      musuem: true,
+      bakery: true,
+      bar: true,
+      cafe: true,
+      food: true,
+      restaurant: true,
+      airports: true,
+      establishement: true,
+      pharmacy: true,
+      store: true
+    }
 
     $scope.research = function() {
 
@@ -246,6 +265,30 @@ angular.module("PoV")
         });
 
       $state.go($state.current, {}, {reload: true});
+    }
+
+    $scope.geolocCityArrival = function() {
+
+          var posOptions = {
+            timeout: 10000,
+            enableHighAccuracy: false
+          };
+
+          $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+              var lat  = position.coords.latitude;
+              var lng = position.coords.longitude;
+
+              getGeolocByLatLng(lat, lng).then(function(Adress) {
+                $scope.search.arrival = Adress;
+              });
+
+            }, function(err) {
+              $scope.errorMessage = "An error attempt when we try to get your current position";
+            });
+
+          $state.go($state.current, {}, {reload: true});
     }
 
     $scope.setTransport = function(type) {

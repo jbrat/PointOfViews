@@ -10,16 +10,19 @@
         </label>
         <span class="errorMessage">{{ errorMessage }}</span>
         <label class="item">
-          <button class="button button-block button-balanced" type="submit">Log in</button>
+          <button class="button button-block button-royal" type="submit">Log in</button>
         </label>
       </div>
     </form>
-    <button class="button button-full button-assertive" type="submit" ng-click="gmailAuth()">Gmail</button>
-    <button id="colorFacebook" class="button button-full button-positive" type="submit" ng-click="facebookAuth()">Facebook</button><br/>
-
-    <div id="linkForget" >
-      <a ng-click="forgotPassword()">Forgot password</a>
+    <div class="sizeDivButton">
+    <button id="colorGmail" class="item button button-block button-assertive" type="submit" ng-click="gmailAuth()"><img class="imageStyle" src="../img/logoGmail.png"/>&nbsp;&nbsp;Gmail</button>
     </div>
+    <div class="sizeDivButton">
+      <button id="colorFacebook" class="button button-block button-positive" type="submit" ng-click="facebookAuth()"><img class="imageStyle" src="../img/logoFacebook.png"/>&nbsp;&nbsp;Facebook</button><br/>
+    </div>
+    <p id="linkForget" >
+      <a ng-click="forgotPassword()">Forgot password</a>
+    </p>
 
 
 

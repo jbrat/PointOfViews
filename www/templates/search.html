@@ -1,5 +1,5 @@
 <ion-view view-title="Search Informations">
-  <ion-content>
+  <ion-content ng-show="printForm">
     <form ng-submit="searchInformations()">
       <label class="item item-input">
         <span class="input-label">Your search :</span>
@@ -10,11 +10,37 @@
         <button class="button button-block button-positive" type="submit">Search</button>
       </label>
     </form>
-
-
-
-
-
+  </ion-content>
+  <ion-content ng-hide="printForm">
+    <div style="float:left;margin-left:2%;">
+      <p>Tour Eiffel</p>
+      <p>5 rue Anatole france</p>
+      <p>75000 PARIS</p>
+      <p>25 likes google Places</p>
+      <p>10 likes foursquare</p>
+    </div>
+    <div style="text-align:center;float:left;">
+      <img width="200" height="200" src="http://www.parisinfo.com/var/otcp/sites/images/_aliases/article_content_miniature/media/1.-photos/02.-sites-culturels-630-x-405/tour-eiffel-trocadero-630x405-c-thinkstock/37221-1-fre-FR/Tour-Eiffel-Trocadero-630x405-C-Thinkstock.jpg" alt="imgPlace">
+      <br>
+      <a href=""><img width="24" height="24" src="img/logoFacebook.jpg"></a>
+      <a href=""><img src="img/twitter.png"></a>
+      <a href=""><img src="img/instagram.png"></a>
+    </div>
+    <div style="clear:both;border:2px solid black;margin:2%;">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div style="margin:2%;border:2px solid black;">
+      <div class="row">
+        <div class="col col-50">
+          <a href=""><img src="http://resize.op6m.fr/remote/dynimg-tao.open-system.fr%2findex.aspx%3ftype%3dbilletv2%26id%3d29782%26url%3dtour_eiffel%2ftour-eiffel6_600_390.jpg?mode=crop&width=640&height=412&scale=both" width="150" height="150"></a>
+        </div>
+        <div class="col col-50">
+          <a href=""><img src="http://resize.op6m.fr/remote/dynimg-tao.open-system.fr%2findex.aspx%3ftype%3dbilletv2%26id%3d29782%26url%3dtour_eiffel%2ftour-eiffel6_600_390.jpg?mode=crop&width=640&height=412&scale=both" width="150" height="150"></a>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
 

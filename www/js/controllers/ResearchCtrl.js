@@ -247,8 +247,8 @@ angular.module("PoV")
       }
     }
 
-    $scope.geolocCity = function() {
-
+    $scope.geolocCity = function(point) {
+      console.log(point);
       var posOptions = {
         timeout: 10000,
         enableHighAccuracy: false
@@ -261,7 +261,11 @@ angular.module("PoV")
           var lng = position.coords.longitude;
 
           getGeolocByLatLng(lat, lng).then(function(Adress) {
-            $scope.search.departure = Adress;
+            if (point == "departure") {
+              $scope.search.departure = Adress;
+            } else {
+              $scope.search.arrival = Adress;
+            }
           });
 
         }, function(err) {
@@ -271,29 +275,7 @@ angular.module("PoV")
       $state.go($state.current, {}, {reload: true});
     }
 
-    $scope.geolocCityArrival = function() {
 
-          var posOptions = {
-            timeout: 10000,
-            enableHighAccuracy: false
-          };
-
-          $cordovaGeolocation
-            .getCurrentPosition(posOptions)
-            .then(function (position) {
-              var lat  = position.coords.latitude;
-              var lng = position.coords.longitude;
-
-              getGeolocByLatLng(lat, lng).then(function(Adress) {
-                $scope.search.arrival = Adress;
-              });
-
-            }, function(err) {
-              $scope.errorMessage = "An error attempt when we try to get your current position";
-            });
-
-          $state.go($state.current, {}, {reload: true});
-    }
 
     $scope.setTransport = function(type) {
      $scope.search.transport = type;

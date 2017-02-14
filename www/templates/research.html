@@ -6,7 +6,7 @@
         </ion-checkbox>
 
         <div class="positionRight">
-          <button class="button button-bock button-dark" type="button"  ng-click="geolocCity()">
+          <button class="button button-bock button-dark" type="button"  ng-click="geolocCity('departure')">
             <i class="icon ion-android-locate"></i>
           </button>
         </div>
@@ -18,8 +18,8 @@
         <div>
         <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
           <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
-          <div class="positionRight ButtonArrival">
-            <button class="button button-bock button-dark" type="button"  ng-click="geolocCityArrival()">
+          <div class="positionRight">
+            <button class="button button-bock button-dark" type="button"  ng-click="geolocCity('arrival')">
               <i class="icon ion-android-locate"></i>
             </button>
           </div>

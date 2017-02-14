@@ -93,12 +93,6 @@
   width: 175px;
 }
 
-#linkForget{
-  text-decoration: underline;
-  text-align: center;
-  font-weight: bold;
-}
-
 .positionRight{
   float: right;
 }
@@ -119,6 +113,14 @@
   font-weight: bold;
 }
 
+#linkForget{
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+  margin: 0 auto;
+  width: 100px;
+}
+
 #colorFacebook{
-  background-color: 3b5998;
+  background-color: #3b5998;
 }

@@ -1,7 +1,7 @@
 {
   "name": "PoV",
   "version": "1.1.1",
-  "description": "PoV: An Ionic project",
+  "description": "PoV: A project to find point of views and generate itinerary",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

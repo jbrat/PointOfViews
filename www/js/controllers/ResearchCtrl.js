@@ -15,77 +15,100 @@ angular.module("PoV")
       transport: 'driving'
     };
 
+
     $scope.typePlaces = [
-    {
-      gName: 'airports',
-      printName :'Airports',
-      status: true
-    },
-    {
-      gName: 'amusement_park',
-      printName: 'Amusement park',
-      status: true
-    },
-    {
-      gName: 'art_gallery',
-      printName: 'Art gallery',
-      status: true
-    },
-    {
-      gName: 'bakery',
-      printName: 'Bakery',
-      status: true
-    },
-    {
-      gName: 'bar',
-      printName: 'Bar',
-      status: true
-    },
-    {
-      gName: 'cafe',
-      printName: 'Cafe',
-      status: true
-    },
-    {
-      gName: 'casino',
-      printName: 'Casino',
-      status: true
-    },
-    {
-      gName: 'establishement',
-      printName: 'Establishement',
-      status: true
-    },
-    {
-      gName: 'food',
-      printName: 'Food',
-      status: true
-    },
-    {
-      gName: 'library',
-      printName: 'Library',
-      status: true
-    },
-    {
-      gName: 'musuem',
-      printName: 'Musuem',
-      status: true
-    },
-    {
-      gName: 'pharmacy',
-      printName: 'Pharmacy',
-      status: true
-    },
-    {
-      gName: 'restaurant',
-      printName: 'Restaurant',
-      status: true
-    },
-    {
-      gName: 'store',
-      printName: 'Store',
-      status: true
-    }];
+      {
+        categorieId: 'divertisment',
+        categorieName: 'Divertisment',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'amusement_park',
+            printName: 'Amusement park',
+            status: true
+          },
+          {
+            gName: 'art_gallery',
+            printName: 'Art gallery',
+            status: true
+          },
+          {
+            gName: 'casino',
+            printName: 'Casino',
+            status: true
+          },
+          {
+            gName: 'library',
+            printName: 'Library',
+            status: true
+          },
+          {
+            gName: 'musuem',
+            printName: 'Musuem',
+            status: true
+          },
+        ]
+      },
+      {
+        categorieId: 'food_establishement',
+        categorieName: 'Food establishement',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'bakery',
+            printName: 'Bakery',
+            status: true
+          },
+          {
+            gName: 'bar',
+            printName: 'Bar',
+            status: true
+          },
+          {
+            gName: 'cafe',
+            printName: 'Cafe',
+            status: true
+          },
+          {
+            gName: 'food',
+            printName: 'Food',
+            status: true
+          },
+          {
+            gName: 'restaurant',
+            printName: 'Restaurant',
+            status: true
+          }
+        ]
+      },
+      {
+        categorieId: 'various',
+        categorieName: 'Various',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'airports',
+            printName :'Airports',
+            status: true
+          },
+          {
+            gName: 'establishement',
+            printName: 'Establishement',
+            status: true
+          },
+          {
+            gName: 'pharmacy',
+            printName: 'Pharmacy',
+            status: true
+          },
+          {
+            gName: 'store',
+            printName: 'Store',
+            status: true
+          }
+        ]
+      }
+    ];
 
     $scope.research = function() {
 
@@ -248,6 +271,30 @@ angular.module("PoV")
       $state.go($state.current, {}, {reload: true});
     }
 
+    $scope.geolocCityArrival = function() {
+
+          var posOptions = {
+            timeout: 10000,
+            enableHighAccuracy: false
+          };
+
+          $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+              var lat  = position.coords.latitude;
+              var lng = position.coords.longitude;
+
+              getGeolocByLatLng(lat, lng).then(function(Adress) {
+                $scope.search.arrival = Adress;
+              });
+
+            }, function(err) {
+              $scope.errorMessage = "An error attempt when we try to get your current position";
+            });
+
+          $state.go($state.current, {}, {reload: true});
+    }
+
     $scope.setTransport = function(type) {
      $scope.search.transport = type;
     }
@@ -261,10 +308,12 @@ angular.module("PoV")
 
       var typesSelected = [];
 
-      angular.forEach($scope.typePlaces, function(itemType) {
-        if(itemType.status) {
-          typesSelected.push(itemType.gName);
-        }
+      angular.forEach($scope.typePlaces, function(categorie) {
+        angular.forEach(categorie.listTypes, function(itemType) {
+          if(itemType.status) {
+            typesSelected.push(itemType.gName);
+          }
+        });
       });
 
       return typesSelected;

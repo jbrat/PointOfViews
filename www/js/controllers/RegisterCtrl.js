@@ -39,7 +39,7 @@ angular.module('PoV')
             } else if(errorCode == "auth/invalid-email") {
               $scope.errorMessage = "Email invalid";
             } else if(errorCode == "auth/email-already-in-use") {
-              $scope.errorMessage = "Your email allready exist";
+              $scope.errorMessage = "Your email already exist";
             } else {
               $scope.errorMessage = errorMessage;
             }

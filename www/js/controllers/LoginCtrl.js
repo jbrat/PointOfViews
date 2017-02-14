@@ -31,7 +31,7 @@ angular.module("PoV")
           } else if(errorCode == 'auth/user-disabled') {
             $scope.errorMessage = "Your account have been disable";
           } else if(errorCode == 'auth/user-not-found') {
-            $scope.errorMessage = "Your account isn't exist";
+            $scope.errorMessage = "Your account does not exist";
           } else {
             $scope.errorMessage = errorMessage;
           }
@@ -58,7 +58,7 @@ angular.module("PoV")
           if(errorCode == 'auth/user-not-found') {
             $scope.errorMessage = "Your account haven't be found";
           } else if(errorCode == 'auth/auth/invalid-email') {
-            $scope.errorMessage = "The email isn't valid";
+            $scope.errorMessage = "The email does not valid";
           } else {
             $scope.errorMessage = errorCode;
           }

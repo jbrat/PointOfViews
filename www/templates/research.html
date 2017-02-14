@@ -63,35 +63,14 @@
         </ion-checkbox>
         </div>
         <br/><br/>
+        <div ng-repeat="categorie in typePlaces">
+          <ion-checkbox type="checkbox" ng-model="categorie.showCategorie" quaria-label="Toggle ngHide">
+            <p class="textStyleBlack">{{ categorie.categorieName }}</p>
+          </ion-checkbox>
 
-        <ion-checkbox type="checkbox" ng-model="search.divertisment" qaria-label="Toggle ngHide">
-          <p class="textStyleBlack">Divertisment</p>
-        </ion-checkbox>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.divertisment" toggle-class='toggle-calm' ng-model="typePlace.amusement_park">Amusement park</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.divertisment" toggle-class='toggle-calm' ng-model="typePlace.art_gallery">Art gallery</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.divertisment" toggle-class='toggle-calm' ng-model="typePlace.casino">Casino</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.divertisment" toggle-class='toggle-calm' ng-model="typePlace.library">Library</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.divertisment" toggle-class='toggle-calm' ng-model="typePlace.musuem">Musuem</ion-toggle>
-
-        <ion-checkbox type="checkbox" ng-model="search.food_establishement" qaria-label="Toggle ngHide">
-          <p class="textStyleBlack">Food establishement</p>
-        </ion-checkbox>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.food_establishement" toggle-class='toggle-calm' ng-model="typePlace.bakery">Bakery</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.food_establishement" toggle-class='toggle-calm' ng-model="typePlace.bar">Bar</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.food_establishement" toggle-class='toggle-calm' ng-model="typePlace.cafe">Cafe</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.food_establishement" toggle-class='toggle-calm' ng-model="typePlace.food">Food</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.food_establishement" toggle-class='toggle-calm' ng-model="typePlace.restaurant">Restaurant</ion-toggle>
-
-        <ion-checkbox type="checkbox" ng-model="search.various" qaria-label="Toggle ngHide">
-          <p class="textStyleBlack">Various</p>
-        </ion-checkbox>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.various" toggle-class='toggle-calm' ng-model="typePlace.airports">Airports</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.various" toggle-class='toggle-calm' ng-model="typePlace.establishement">Establishement</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.various" toggle-class='toggle-calm' ng-model="typePlace.pharmacy">Pharmacy</ion-toggle>
-        <ion-toggle class="check-element animate-show-hide" ng-show="search.various" toggle-class='toggle-calm' ng-model="typePlace.store">Store</ion-toggle>
-
-        <!--<ion-toggle ng-repeat="type in typePlaces" toggle-class='toggle-calm' ng-model="type.status">{{ type.printName }}</ion-toggle>
-        -->
+          <ion-toggle ng-repeat="type in categorie.listTypes" ng-show="categorie.showCategorie" toggle-class='toggle-calm' ng-model="type.status">{{ type.printName }}</ion-toggle>
+        </div>
+        
         <label class="item">
           <button class="button button-block button-positive" type="submit">Validate</button>
         </label>

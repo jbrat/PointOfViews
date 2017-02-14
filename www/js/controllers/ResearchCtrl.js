@@ -16,95 +16,99 @@ angular.module("PoV")
     };
 
 
-
     $scope.typePlaces = [
-    {
-      gName: 'airports',
-      printName :'Airports',
-      status: true
-    },
-    {
-      gName: 'amusement_park',
-      printName: 'Amusement park',
-      status: true
-    },
-    {
-      gName: 'art_gallery',
-      printName: 'Art gallery',
-      status: true
-    },
-    {
-      gName: 'bakery',
-      printName: 'Bakery',
-      status: true
-    },
-    {
-      gName: 'bar',
-      printName: 'Bar',
-      status: true
-    },
-    {
-      gName: 'cafe',
-      printName: 'Cafe',
-      status: true
-    },
-    {
-      gName: 'casino',
-      printName: 'Casino',
-      status: true
-    },
-    {
-      gName: 'establishement',
-      printName: 'Establishement',
-      status: true
-    },
-    {
-      gName: 'food',
-      printName: 'Food',
-      status: true
-    },
-    {
-      gName: 'library',
-      printName: 'Library',
-      status: true
-    },
-    {
-      gName: 'musuem',
-      printName: 'Musuem',
-      status: true
-    },
-    {
-      gName: 'pharmacy',
-      printName: 'Pharmacy',
-      status: true
-    },
-    {
-      gName: 'restaurant',
-      printName: 'Restaurant',
-      status: true
-    },
-    {
-      gName: 'store',
-      printName: 'Store',
-      status: true
-    }];
-
-    $scope.typePlace = {
-      amusement_park : true,
-      art_gallery: true,
-      casino: true,
-      library: true,
-      musuem: true,
-      bakery: true,
-      bar: true,
-      cafe: true,
-      food: true,
-      restaurant: true,
-      airports: true,
-      establishement: true,
-      pharmacy: true,
-      store: true
-    }
+      {
+        categorieId: 'divertisment',
+        categorieName: 'Divertisment',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'amusement_park',
+            printName: 'Amusement park',
+            status: true
+          },
+          {
+            gName: 'art_gallery',
+            printName: 'Art gallery',
+            status: true
+          },
+          {
+            gName: 'casino',
+            printName: 'Casino',
+            status: true
+          },
+          {
+            gName: 'library',
+            printName: 'Library',
+            status: true
+          },
+          {
+            gName: 'musuem',
+            printName: 'Musuem',
+            status: true
+          },
+        ]
+      },
+      {
+        categorieId: 'food_establishement',
+        categorieName: 'Food establishement',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'bakery',
+            printName: 'Bakery',
+            status: true
+          },
+          {
+            gName: 'bar',
+            printName: 'Bar',
+            status: true
+          },
+          {
+            gName: 'cafe',
+            printName: 'Cafe',
+            status: true
+          },
+          {
+            gName: 'food',
+            printName: 'Food',
+            status: true
+          },
+          {
+            gName: 'restaurant',
+            printName: 'Restaurant',
+            status: true
+          }
+        ]
+      },
+      {
+        categorieId: 'various',
+        categorieName: 'Various',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'airports',
+            printName :'Airports',
+            status: true
+          },
+          {
+            gName: 'establishement',
+            printName: 'Establishement',
+            status: true
+          },
+          {
+            gName: 'pharmacy',
+            printName: 'Pharmacy',
+            status: true
+          },
+          {
+            gName: 'store',
+            printName: 'Store',
+            status: true
+          }
+        ]
+      }
+    ];
 
     $scope.research = function() {
 
@@ -304,10 +308,12 @@ angular.module("PoV")
 
       var typesSelected = [];
 
-      angular.forEach($scope.typePlaces, function(itemType) {
-        if(itemType.status) {
-          typesSelected.push(itemType.gName);
-        }
+      angular.forEach($scope.typePlaces, function(categorie) {
+        angular.forEach(categorie.listTypes, function(itemType) {
+          if(itemType.status) {
+            typesSelected.push(itemType.gName);
+          }
+        });
       });
 
       return typesSelected;

@@ -37,8 +37,12 @@ angular.module("PoV")
         " &v=20131124"
       )
       .success(function(data){
+
+      $scope.result= angular.fromJson(data);
+
                     console.log("Sucess");
-                    console.log(data);
+                    console.log($scope.result.response.geocode.displayString);
+                    console.log()
                     }
        ).error(function(data) {
                      console.log("Error");

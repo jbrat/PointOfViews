@@ -11,22 +11,30 @@
       </label>
     </form>
   </ion-content>
+  <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
   <ion-content ng-hide="printForm">
-    <div style="float:left;margin-left:2%;">
-      <p>Tour Eiffel</p>
-      <p>5 rue Anatole france</p>
-      <p>75000 PARIS</p>
-      <p>25 likes google Places</p>
-      <p>10 likes foursquare</p>
+    <div class="align-center">
+      <img src="{{ parseResult.photos[0] }}" alt="imgPlace">
+      <p class="title">{{ parseResult.name }}</p>
     </div>
-    <div style="text-align:center;float:left;">
-      <img width="200" height="200" src="http://www.parisinfo.com/var/otcp/sites/images/_aliases/article_content_miniature/media/1.-photos/02.-sites-culturels-630-x-405/tour-eiffel-trocadero-630x405-c-thinkstock/37221-1-fre-FR/Tour-Eiffel-Trocadero-630x405-C-Thinkstock.jpg" alt="imgPlace">
-      <br>
-      <a href=""><img width="24" height="24" src="img/logoFacebook.jpg"></a>
-      <a href=""><img src="img/twitter.png"></a>
-      <a href=""><img src="img/instagram.png"></a>
+    <div class="row">
+      <div class="col col-100">
+        <p>{{ parseResult.location[0] }}</p>
+        <p>{{ parseResult.location[1] }} {{ parseResult.location[2] }}</p>
+      </div>
     </div>
-    <div style="clear:both;border:2px solid black;margin:2%;">
+    <div class="row">
+      <div class="col col-50">
+        <p>{{ parseResult.ratingGPlaces }} / 5 google Places</p>
+        <p>{{ parseResult.rating }} / 10 likes Foursquare</p>
+      </div>
+      <div class="col col-50 align-center">
+        <a href="http://facebook.com/{{ parseResult.contact.facebook }}"><img src="img/facebook.png"></a>
+        <a style="margin-left:2%;" href="https://twitter.com/{{ parseResult.contact.twitter }}"><img src="img/twitter.png"></a>
+        <a style="margin-left:2%;" href="https://www.instagram.com/{{ parseResult.contact.instagram }}"><img src="img/instagram.png"></a>
+      </div>
+    </div>
+    <div style="border:2px solid black;margin:2%;">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
@@ -34,12 +42,32 @@
     <div style="margin:2%;border:2px solid black;">
       <div class="row">
         <div class="col col-50">
-          <a href=""><img src="http://resize.op6m.fr/remote/dynimg-tao.open-system.fr%2findex.aspx%3ftype%3dbilletv2%26id%3d29782%26url%3dtour_eiffel%2ftour-eiffel6_600_390.jpg?mode=crop&width=640&height=412&scale=both" width="150" height="150"></a>
+          <a href="{{ parseResult.photos[1] }}"><img src="{{ parseResult.photos[1] }}"></a>
         </div>
         <div class="col col-50">
-          <a href=""><img src="http://resize.op6m.fr/remote/dynimg-tao.open-system.fr%2findex.aspx%3ftype%3dbilletv2%26id%3d29782%26url%3dtour_eiffel%2ftour-eiffel6_600_390.jpg?mode=crop&width=640&height=412&scale=both" width="150" height="150"></a>
+          <a href="{{ parseResult.photos[2] }}"><img src="{{ parseResult.photos[2] }}"></a>
         </div>
       </div>
+      <div class="row">
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[3] }}"><img src="{{ parseResult.photos[3] }}"></a>
+        </div>
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[4] }}"><img src="{{ parseResult.photos[4] }}"></a>
+        </div>
+      </div>
+    </div>
+    <div style="margin:2%;border: 2px solid black;" ng-repeat="review in parseResult.reviews">
+      <div class="row">
+        <div class="col col-50">
+          <a href=""><img src="{{ review.profile_photo_url }}"></a>
+        </div>
+        <div class="col col-50">
+          <p>{{ review.author_name }}</p>
+          <p>{{ review.rating }} / 5</p>
+        </div>
+      </div>
+      <p>{{ review.text }}</p>
     </div>
   </ion-content>
 </ion-view>

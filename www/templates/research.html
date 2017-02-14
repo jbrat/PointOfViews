@@ -10,33 +10,23 @@
             <i class="icon ion-android-locate"></i>
           </button>
         </div>
-
         <label class="item item-input">
           <input type="text" ng-autocomplete ng-model="search.departure" placeholder="Departure..." />
         </label>
 
-        <div>
+        <div class="positionLeft">
+          <button class="button button-bock button-dark" type="button" ng-click="geolocCity('arrival')">
+            <i class="icon ion-android-locate"></i>
+          </button>
+        </div>
         <label class="item item-input check-element animate-show-hide" ng-hide="search.clear">
           <input type="text" ng-autocomplete name="clearInput" ng-model="search.arrival" placeholder="Arrival..." />
-          <div class="positionRight">
-            <button class="button button-bock button-dark" type="button"  ng-click="geolocCity('arrival')">
-              <i class="icon ion-android-locate"></i>
-            </button>
-          </div>
         </label>
-        </div>
-
         <label>
           <p class="errorMessage">{{ errorMessage }}</p>
         </label>
         <br/>
         <div ng-show="search.clear">
-         <!-- <p class="textStyleBlue">Choose a time and a distance for your trip</p>
-          <label class="item item-input">
-            <input type="range" ng-model="search.time" min="15" max="300" placeholder="Time..." value="0" oninput="document.getElementById('AfficheTime').textContent=value" />
-            &nbsp;<span id="AfficheTime">0</span>&nbsp;Min
-          </label>
-          <br/>-->
           <label class="item item-input">
             <input type="range" ng-model="search.distance" min="100" max="50000" step="100" placeholder="Distance..." value="0" oninput="document.getElementById('AfficheDistance').textContent=value" />
             &nbsp;<span id="AfficheDistance">0</span>&nbsp;Meters

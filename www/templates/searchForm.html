@@ -1,0 +1,15 @@
+<ion-view view-title="Search Informations">
+  <ion-content>
+    <form ng-submit="searchInformations()">
+      <label class="item item-input">
+        <input type="text" ng-model="search.word" placeholder="Your search...">
+      </label>
+
+      <label class="item">
+        <button class="button button-block button-royal" type="submit">Search</button>
+      </label>
+    </form>
+    <p class="errorMessage"> {{ errorMessage }}</p>
+  </ion-content>
+</ion-view>
+

@@ -1,17 +1,6 @@
 <ion-view view-title="Search Informations">
-  <ion-content ng-show="printForm">
-    <form ng-submit="searchInformations()">
-      <label class="item item-input">
-        <input type="text" ng-model="search.word" placeholder="Your search...">
-      </label>
-
-      <label class="item">
-        <button class="button button-block button-royal" type="submit">Search</button>
-      </label>
-    </form>
-  </ion-content>
   <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
-  <ion-content ng-hide="printForm">
+  <ion-content ng-hide="showError">
     <div class="align-center">
       <img src="{{ parseResult.photos[0] }}" alt="imgPlace">
       <p class="title">{{ parseResult.name }}</p>
@@ -34,9 +23,8 @@
       </div>
     </div>
     <div style="border:2px solid black;margin:2%;">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <p>Horaires : </p>
+      <p ng-repeat="hour in parseResult.openingHours"> {{ hour }}</p>
     </div>
     <div style="margin:2%;border:2px solid black;">
       <div class="row">

@@ -43,8 +43,8 @@ angular.module("PoV")
             status: true
           },
           {
-            gName: 'musuem',
-            printName: 'Musuem',
+            gName: 'museum',
+            printName: 'Museum',
             status: true
           },
         ]
@@ -297,7 +297,6 @@ angular.module("PoV")
           }
         });
       });
-
       return typesSelected;
     }
 
@@ -435,7 +434,8 @@ angular.module("PoV")
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(place.name);
+        var content = "<p>"+ place.name + "</p>" + "<a href='#/app/search/"+place.name+"'>More infos+</a>";
+        infowindow.setContent(content);
         infowindow.open(map, this);
       });
     }

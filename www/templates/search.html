@@ -1,16 +1,40 @@
 <ion-view view-title="Search Informations">
   <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
   <ion-content ng-hide="showError">
-    <div class="align-center">
-      <img src="{{ parseResult.photos[0] }}" alt="imgPlace">
-      <p class="title">{{ parseResult.name }}</p>
-    </div>
-    <div class="row">
-      <div class="col col-100">
-        <p>{{ parseResult.location[0] }}</p>
-        <p>{{ parseResult.location[1] }} {{ parseResult.location[2] }}</p>
+
+    <div class="polaroid">
+      <img class="styleImg" src="{{ parseResult.photos[0] }}" alt="Image Not Found">
+      <div class="container">
+        <p class="align-center title">{{ parseResult.name }}</p>
       </div>
     </div>
+
+    <div class="container row">
+      <div class="col col-100">
+        <p class="styleAdress">{{ parseResult.location[0] }}</p>
+        <p class="styleAdress">{{ parseResult.location[1] }} {{ parseResult.location[2] }}</p>
+      </div>
+    </div>
+
+
+    <div class="stars ratingStarsCenter">
+      <form action="">
+        <input class="star star-5" id="star-5" type="radio" name="star"/>
+        <label class="star star-5" for="star-5"></label>
+        <input class="star star-4" id="star-4" type="radio" name="star"/>
+        <label class="star star-4" for="star-4"></label>
+        <input class="star star-3" id="star-3" type="radio" name="star"/>
+        <label class="star star-3" for="star-3"></label>
+        <input class="star star-2" id="star-2" type="radio" name="star"/>
+        <label class="star star-2" for="star-2"></label>
+        <input class="star star-1" id="star-1" type="radio" name="star"/>
+        <label class="star star-1" for="star-1"></label>
+        <button class="button button-block button-royal" type="reset">Reset</button>
+        <button class="button button-block button-royal" type="submit">Submit</button>
+      </form>
+    </div>
+
+
     <div class="row">
       <div class="col col-50">
         <p>{{ parseResult.ratingGPlaces }} / 5 google Places</p>
@@ -22,11 +46,17 @@
         <a style="margin-left:2%;" href="https://www.instagram.com/{{ parseResult.contact.instagram }}"><img src="img/instagram.png"></a>
       </div>
     </div>
-    <div style="border:2px solid black;margin:2%;">
-      <p>Horaires : </p>
-      <p ng-repeat="hour in parseResult.openingHours"> {{ hour }}</p>
+
+
+    <div class="schedules">
+      <div class="schedulesBis">
+        <p class="align-center title underlineSchedules">Schedules : </p>
+      </div>
+      <hr/>
+      <p class="align-center boldSchedules" ng-repeat="hour in parseResult.openingHours"> {{ hour }}</p>
+      <hr/>
     </div>
-    <div style="margin:2%;border:2px solid black;">
+    <div class="styleImgFour">
       <div class="row">
         <div class="col col-50">
           <a href="{{ parseResult.photos[1] }}"><img src="{{ parseResult.photos[1] }}"></a>
@@ -44,13 +74,13 @@
         </div>
       </div>
     </div>
-    <div style="margin:2%;border: 2px solid black;" ng-repeat="review in parseResult.reviews">
+    <div class="styleReviews" ng-repeat="review in parseResult.reviews">
       <div class="row">
         <div class="col col-50">
-          <a href=""><img src="{{ review.profile_photo_url }}"></a>
+          <a href=""><img class="styleImgProfil" src="{{ review.profile_photo_url }}"></a>
         </div>
         <div class="col col-50">
-          <p>{{ review.author_name }}</p>
+          <p class="colorPoV">{{ review.author_name }}</p>
           <p>{{ review.rating }} / 5</p>
         </div>
       </div>

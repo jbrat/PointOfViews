@@ -1,12 +1,10 @@
 angular.module("PoV")
-  .controller('ResearchCtrl', function($scope, $state, $cordovaGeolocation, $http, $q, GoogleAPIKey) {
+  .controller('ResearchCtrl', function($scope, $state, $cordovaGeolocation, $http, $q, GoogleAPIKey, FirebaseInstance, user) {
     $scope.showResearhForm = true;
 
     $scope.search = {
       departure: '',
       arrival: '',
-      time: '',
-      clear: '',
       distance: '',
       checkedCar: '',
       checkedBus: '',
@@ -111,6 +109,10 @@ angular.module("PoV")
     ];
 
     $scope.research = function() {
+
+      if(user.isLogin) {
+        saveItinaryForUser();
+      }
 
       $scope.showResearhForm = false;
 
@@ -495,6 +497,19 @@ angular.module("PoV")
       });
 
       return defer.promise;
+    }
+
+
+    /**
+     * Method to save the itinary data for a user
+     */
+    function saveItinaryForUser() {
+
+      var datasearch = $scope.search;
+      datasearch['userEmail'] = user.userConnected.email;
+      datasearch['googlePlacesTypes'] = getGoogleTypesCategorieSelected();
+
+      firebase.database().ref('routes/').push(datasearch);
     }
   });
 

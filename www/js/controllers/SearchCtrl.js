@@ -11,55 +11,59 @@ angular.module('PoV')
     "&client_secret=" + "W3P4YQZKFSCUFKUOFAVJFF0XMD1AXTCFUG0UFOQGCNPFMHF1" +
     " &v=20131124"
   )
-    .success(function (data) {
+  .success(function (data) {
+    $scope.parseResult = parseResult4Square(angular.fromJson(data));
 
-      $scope.parseResult = parseResult4Square(angular.fromJson(data));
+    var request = {
+      query: $stateParams.textSearch
+    }
+    var service = new google.maps.places.PlacesService(document.createElement('div'));
 
-      var request = {
-        query: $stateParams.textSearch
-      }
-      var service = new google.maps.places.PlacesService(document.createElement('div'));
+    service.textSearch(request, function (results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        var resultGPlacesPlaceID = results[0].place_id;
 
-      service.textSearch(request, function (results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-          var resultGPlacesPlaceID = results[0].place_id;
+        var request2 = {
+          placeId: resultGPlacesPlaceID,
+          language: 'en'
+        };
+        service.getDetails(request2, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            $scope.parseResult['openingHours'] = place.opening_hours.weekday_text;
+            var photos = [];
+            photos[0] = place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 200});
 
-          var request2 = {
-            placeId: resultGPlacesPlaceID,
-            language: 'en'
-          };
-          service.getDetails(request2, function (place, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              $scope.parseResult['openingHours'] = place.opening_hours.weekday_text;
-              var photos = [];
-              photos[0] = place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 200});
-
-              for (var i = 1; i <= 4; i++) {
-                photos.push(place.photos[i].getUrl({'maxWidth': 150, 'maxHeight': 150}));
-              }
-              $scope.parseResult['photos'] = photos;
-              $scope.parseResult['ratingGPlaces'] = place.rating;
-              $scope.parseResult['reviews'] = [];
-              angular.forEach(place.reviews, function (review) {
-                if (review.profile_photo_url) {
-                  $scope.parseResult['reviews'].push(review);
-                }
-              });
-              $scope.showError = false;
-              $state.go($state.current, {}, {reload: true});
-            } else {
-              $scope.showError = true;
-              $scope.errorMessage = "Can't load any places for this research in google places";
+            for (var i = 1; i <= 4; i++) {
+              photos.push(place.photos[i].getUrl({'maxWidth': 150, 'maxHeight': 150}));
             }
-          })
-        } else {
-          $scope.showError = true;
-          $scope.errorMessage = "Can't load any places for this research";
-        }
-      });
-    }).error(function (data) {
+            $scope.parseResult['photos'] = photos;
+            $scope.parseResult['ratingGPlaces'] = place.rating;
+            $scope.parseResult['reviews'] = [];
+            angular.forEach(place.reviews, function (review) {
+              if (review.profile_photo_url) {
+                $scope.parseResult['reviews'].push(review);
+              }
+            });
+            $scope.showError = false;
+            $state.go($state.current, {}, {reload: true});
+          } else {
+            $scope.showError = true;
+            $scope.errorMessage = "Can't load any places for this research in google places";
+            $state.go($state.current, {}, {reload: true});
+
+          }
+        })
+      } else {
+        $scope.showError = true;
+        $scope.errorMessage = "Can't load any places for this research";
+        $state.go($state.current, {}, {reload: true});
+
+      }
+    });
+  }).error(function (data) {
     $scope.showError = true;
     $scope.errorMessage = "Can't load any places for this research";
+    $state.go($state.current, {}, {reload: true});
   });
 
 

@@ -78,10 +78,6 @@
   transition: all linear 0.5s;
 }
 
-.check-element {
-  width: 380px;
-}
-
 .scroll {
     height: 100%;
 }
@@ -104,8 +100,7 @@
 }
 
 #positionButtonArrival{
-  margin-left: 1%;
-  padding-right: 3%;
+  margin-left: 5%;
 }
 
 #linkForgetP {
@@ -134,11 +129,15 @@
   background-color: #ec0c0c;
 }
 
-.textStyleViolet{
+.textStyleViolet {
   color: #660099;
   word-spacing: 5px;
   text-align: center;
   font-weight: bold;
+}
+
+.sizeInputArrival {
+  padding-right: 30%;
 }
 
 /**

@@ -1,6 +1,10 @@
 angular.module('PoV')
-.controller('SearchCtrl', function($scope, $http, $stateParams, $state) {
+.controller('SearchCtrl', function($scope, $http, $stateParams, $state, FirebaseInstance, user) {
 
+  $scope.rating = {
+    star: null
+  };
+  $scope.user = user;
   $scope.showError = true;
   $scope.parseResult = [];
   $http.get(
@@ -22,7 +26,7 @@ angular.module('PoV')
     service.textSearch(request, function (results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         var resultGPlacesPlaceID = results[0].place_id;
-
+        $scope.parseResult['GPlaceID'] = resultGPlacesPlaceID;
         var request2 = {
           placeId: resultGPlacesPlaceID,
           language: 'en'
@@ -65,6 +69,19 @@ angular.module('PoV')
     $scope.errorMessage = "Can't load any places for this research";
     $state.go($state.current, {}, {reload: true});
   });
+
+  $scope.setNotation = function() {
+    var rate = $scope.rating.star;
+    var gplacesId = $scope.parseResult.GPlaceID;
+
+    var notation = {
+      rate : rate,
+      gplacesId: gplacesId,
+      userEmail: user.userConnected.email
+    }
+    firebase.database().ref('rating/').push(notation);
+
+  }
 
 
   /**

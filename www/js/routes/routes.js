@@ -16,7 +16,7 @@ angular.module('PoV.routes', [])
       url: '/menu',
       abstract: true,
       templateUrl: 'templates/menu.html',
-      controller: 'AppCtrl'
+      controller: 'MenuCtrl'
     })
 
     .state('menu.home', {

@@ -1,9 +1,14 @@
 <ion-view view-title="Search Informations">
-  <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
-  <ion-content ng-hide="showError">
 
+  <ion-content ng-show="showError" style="text-align: center;margin-top: 20%;">
+    <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
+    <br><br>
+    <img src="img/404error.jpg" alt="error">
+  </ion-content>
+
+  <ion-content ng-hide="showError">
     <div class="polaroid">
-      <img class="styleImg" src="{{ parseResult.photos[0] }}" alt="Image Not Found">
+      <img class="styleImg" ng-show="parseResult.photos" src="{{ parseResult.photos[0] }}" alt="Image Not Found">
       <div class="container">
         <p class="align-center title">{{ parseResult.name }}</p>
       </div>

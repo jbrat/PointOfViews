@@ -33,21 +33,29 @@ angular.module('PoV')
         };
         service.getDetails(request2, function (place, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
-            $scope.parseResult['openingHours'] = place.opening_hours.weekday_text;
-            var photos = [];
-            photos[0] = place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 200});
 
-            for (var i = 1; i <= 4; i++) {
-              photos.push(place.photos[i].getUrl({'maxWidth': 150, 'maxHeight': 150}));
+            $scope.parseResult['openingHours'] = place.opening_hours ? place.opening_hours.weekday_text : null;
+            var photos = [];
+            if(place.photos) {
+              photos[0] =  place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 200});
+
+              for (var i = 1; i <= 4; i++) {
+                photos.push(place.photos[i].getUrl({'maxWidth': 150, 'maxHeight': 150}));
+              }
+              $scope.parseResult['photos'] = photos;
             }
-            $scope.parseResult['photos'] = photos;
+
             $scope.parseResult['ratingGPlaces'] = place.rating;
             $scope.parseResult['reviews'] = [];
-            angular.forEach(place.reviews, function (review) {
-              if (review.profile_photo_url) {
-                $scope.parseResult['reviews'].push(review);
-              }
-            });
+
+            if(place.reviews) {
+              angular.forEach(place.reviews, function (review) {
+                if (review.profile_photo_url) {
+                  $scope.parseResult['reviews'].push(review);
+                }
+              });
+            }
+
             $scope.showError = false;
             $state.go($state.current, {}, {reload: true});
           } else {
@@ -65,8 +73,9 @@ angular.module('PoV')
       }
     });
   }).error(function (data) {
+    console.log("test");
     $scope.showError = true;
-    $scope.errorMessage = "Can't load any places for this research";
+    $scope.errorMessage = "Can't load any places for this research, please try again";
     $state.go($state.current, {}, {reload: true});
   });
 

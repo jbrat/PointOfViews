@@ -27,5 +27,12 @@ angular.module("PoV")
         $state.go($state.current, {}, {reload: true});
       })
     }
-    
+
+
+    $scope.checkHistory = function() {
+    }
+
+
+    $scope.checkLikes = function() {
+    }
   });

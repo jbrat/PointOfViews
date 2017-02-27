@@ -1,16 +1,10 @@
 angular.module('PoV.controllers', [])
 
   .controller('AppCtrl', function($scope, $state, $ionicModal, $timeout, $ionicHistory, user, FirebaseInstance) {
+
     $scope.user = user;
 
-    if(user.isLogin)
-    {
-      console.log("utilisateur log");
-    }
-    else
-    {
-      console.log("utilisateur pas log");
-    }
+
     $scope.disconnect = function() {
 
       FirebaseInstance.auth().signOut().then(function(error) {
@@ -24,10 +18,11 @@ angular.module('PoV.controllers', [])
 
 
 
-          $state.go('app.home', {reload: true});
+          $state.go('app', {reload: true});
         })
       });
     }
+
   });
 
 

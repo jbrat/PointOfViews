@@ -18,15 +18,15 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/home">
+        <ion-item menu-close href="#/menu/home">
           <i class="icon ion-home"></i>
           Home
         </ion-item>
-        <ion-item ng-show="user.isLogin" href="#/app/profil">
+        <ion-item ng-show="user.isLogin" href="#/menu/profil">
           <i class="icon ion-person-stalker"></i>
           Profil
         </ion-item>
-        <ion-item ng-hide="user.isLogin" href="#/app/login">
+        <ion-item ng-hide="user.isLogin" href="#/menu/login">
           <i class="icon ion-ios-locked"></i>
           Login
         </ion-item>
@@ -34,19 +34,19 @@
           <i class="icon ion-ios-unlocked"></i>
           Logout
         </ion-item>
-        <ion-item href="#/app/register" ng-hide="user.isLogin">
+        <ion-item href="#/menu/register" ng-hide="user.isLogin">
           <i class="icon ion-person-add"></i>
           Register
         </ion-item>
-        <ion-item href="#/app/research">
+        <ion-item href="#/menu/research">
           <i class="icon ion-search"></i>
           Research
         </ion-item>
-        <ion-item href="#/app/searchForm">
+        <ion-item href="#/menu/searchForm">
           <i class="icon ion-search"></i>
           Search
         </ion-item>
-        <ion-item href="#/app/geoloc">
+        <ion-item href="#/menu/geoloc">
           <i class="icon ion-location"></i>
           Your position
         </ion-item>

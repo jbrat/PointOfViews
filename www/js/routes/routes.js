@@ -68,15 +68,27 @@ angular.module('PoV.routes', [])
         }
       }
     })
-    .state('menu.search', {
-      url: '/search',
+
+    .state('menu.searchForm', {
+      url: '/searchForm',
       views: {
+        'menuContent': {
+          templateUrl: 'templates/searchForm.html',
+          controller: 'SearchFormCtrl'
+        }
+      }
+    })
+
+    .state('menu.search', {
+          url: '/search',
+        views: {
         'menuContent': {
           templateUrl: 'templates/search.html',
           controller: 'SearchCtrl'
         }
       }
     })
+
     .state('menu.research', {
           url: '/research',
           views: {

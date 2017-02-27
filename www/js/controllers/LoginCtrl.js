@@ -31,7 +31,7 @@ angular.module("PoV")
           } else if(errorCode == 'auth/user-disabled') {
             $scope.errorMessage = "Your account have been disable";
           } else if(errorCode == 'auth/user-not-found') {
-            $scope.errorMessage = "Your account isn't exist";
+            $scope.errorMessage = "Your account does not exist";
           } else {
             $scope.errorMessage = errorMessage;
           }
@@ -58,7 +58,7 @@ angular.module("PoV")
           if(errorCode == 'auth/user-not-found') {
             $scope.errorMessage = "Your account haven't be found";
           } else if(errorCode == 'auth/auth/invalid-email') {
-            $scope.errorMessage = "The email isn't valid";
+            $scope.errorMessage = "The email does not valid";
           } else {
             $scope.errorMessage = errorCode;
           }
@@ -104,6 +104,47 @@ angular.module("PoV")
           $scope.errorMessage = errorCode;
         }
         $state.go($state.current, {}, {reload: true});
+      });
+    }
+
+    $scope.gmailAuth = function()  {
+
+      var provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope("https://www.googleapis.com/auth/plus.login");
+
+      FirebaseInstance.auth().signInWithPopup(provider).then(function (result) {
+
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        user.userConnected = result.user;
+        user.isLogin = true;
+
+        $ionicHistory.clearCache().then(function() {
+          //now you can clear history or goto another state if you need
+          $ionicHistory.clearHistory();
+          $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+
+          $state.go('app.home', {reload: true});
+        });
+      })
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMesssage = error.message;
+
+        if(errorCode == 'auth/popup-blocked') {
+          $scope.errorMessage = "Your smartphone block the google+ popup authentification";
+        } else if(errorCode == 'auth/popup-closed-by-user') {
+          $scope.errorMessage = "You have closed the google+ connection window";
+        } else if(errorCode == 'auth/operation-not-allowed') {
+          $scope.errorMessage = "Your google+ account have been blocked by the administrator";
+        } else if(errorCode == 'auth/cancelled-popup-request') {
+          $scope.errorMessage = "Only one instance of connection google+ can be load";
+        } else {
+          $scope.errorMessage = errorCode;
+        }
+        $state.go($state.current, {}, {reload: true});
+
+
       });
     }
 

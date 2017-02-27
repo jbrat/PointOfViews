@@ -4,7 +4,6 @@ angular.module('PoV.controllers', [])
 
     $scope.user = user;
 
-
     $scope.disconnect = function() {
 
       FirebaseInstance.auth().signOut().then(function(error) {

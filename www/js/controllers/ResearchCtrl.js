@@ -1,12 +1,10 @@
 angular.module("PoV")
-  .controller('ResearchCtrl', function($scope, $state, $cordovaGeolocation, $http, $q, GoogleAPIKey) {
+  .controller('ResearchCtrl', function($scope, $state, $cordovaGeolocation, $http, $q, GoogleAPIKey, FirebaseInstance, user) {
     $scope.showResearhForm = true;
 
     $scope.search = {
       departure: '',
       arrival: '',
-      time: '',
-      clear: '',
       distance: '',
       checkedCar: '',
       checkedBus: '',
@@ -15,79 +13,106 @@ angular.module("PoV")
       transport: 'driving'
     };
 
+
     $scope.typePlaces = [
-    {
-      gName: 'airports',
-      printName :'Airports',
-      status: true
-    },
-    {
-      gName: 'amusement_park',
-      printName: 'Amusement park',
-      status: true
-    },
-    {
-      gName: 'art_gallery',
-      printName: 'Art gallery',
-      status: true
-    },
-    {
-      gName: 'bakery',
-      printName: 'Bakery',
-      status: true
-    },
-    {
-      gName: 'bar',
-      printName: 'Bar',
-      status: true
-    },
-    {
-      gName: 'cafe',
-      printName: 'Cafe',
-      status: true
-    },
-    {
-      gName: 'casino',
-      printName: 'Casino',
-      status: true
-    },
-    {
-      gName: 'establishement',
-      printName: 'Establishement',
-      status: true
-    },
-    {
-      gName: 'food',
-      printName: 'Food',
-      status: true
-    },
-    {
-      gName: 'library',
-      printName: 'Library',
-      status: true
-    },
-    {
-      gName: 'musuem',
-      printName: 'Musuem',
-      status: true
-    },
-    {
-      gName: 'pharmacy',
-      printName: 'Pharmacy',
-      status: true
-    },
-    {
-      gName: 'restaurant',
-      printName: 'Restaurant',
-      status: true
-    },
-    {
-      gName: 'store',
-      printName: 'Store',
-      status: true
-    }];
+      {
+        categorieId: 'divertisment',
+        categorieName: 'Divertisment',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'amusement_park',
+            printName: 'Amusement park',
+            status: true
+          },
+          {
+            gName: 'art_gallery',
+            printName: 'Art gallery',
+            status: true
+          },
+          {
+            gName: 'casino',
+            printName: 'Casino',
+            status: true
+          },
+          {
+            gName: 'library',
+            printName: 'Library',
+            status: true
+          },
+          {
+            gName: 'museum',
+            printName: 'Museum',
+            status: true
+          },
+        ]
+      },
+      {
+        categorieId: 'food_establishement',
+        categorieName: 'Food establishement',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'bakery',
+            printName: 'Bakery',
+            status: true
+          },
+          {
+            gName: 'bar',
+            printName: 'Bar',
+            status: true
+          },
+          {
+            gName: 'cafe',
+            printName: 'Cafe',
+            status: true
+          },
+          {
+            gName: 'food',
+            printName: 'Food',
+            status: true
+          },
+          {
+            gName: 'restaurant',
+            printName: 'Restaurant',
+            status: true
+          }
+        ]
+      },
+      {
+        categorieId: 'various',
+        categorieName: 'Various',
+        showCategorie: false,
+        listTypes: [
+          {
+            gName: 'airports',
+            printName :'Airports',
+            status: true
+          },
+          {
+            gName: 'establishement',
+            printName: 'Establishement',
+            status: true
+          },
+          {
+            gName: 'pharmacy',
+            printName: 'Pharmacy',
+            status: true
+          },
+          {
+            gName: 'store',
+            printName: 'Store',
+            status: true
+          }
+        ]
+      }
+    ];
 
     $scope.research = function() {
+
+      if(user.isLogin) {
+        saveItinaryForUser();
+      }
 
       $scope.showResearhForm = false;
 
@@ -224,8 +249,8 @@ angular.module("PoV")
       }
     }
 
-    $scope.geolocCity = function() {
-
+    $scope.geolocCity = function(point) {
+      console.log(point);
       var posOptions = {
         timeout: 10000,
         enableHighAccuracy: false
@@ -238,7 +263,11 @@ angular.module("PoV")
           var lng = position.coords.longitude;
 
           getGeolocByLatLng(lat, lng).then(function(Adress) {
-            $scope.search.departure = Adress;
+            if (point == "departure") {
+              $scope.search.departure = Adress;
+            } else {
+              $scope.search.arrival = Adress;
+            }
           });
 
         }, function(err) {
@@ -247,6 +276,8 @@ angular.module("PoV")
 
       $state.go($state.current, {}, {reload: true});
     }
+
+
 
     $scope.setTransport = function(type) {
      $scope.search.transport = type;
@@ -261,12 +292,13 @@ angular.module("PoV")
 
       var typesSelected = [];
 
-      angular.forEach($scope.typePlaces, function(itemType) {
-        if(itemType.status) {
-          typesSelected.push(itemType.gName);
-        }
+      angular.forEach($scope.typePlaces, function(categorie) {
+        angular.forEach(categorie.listTypes, function(itemType) {
+          if(itemType.status) {
+            typesSelected.push(itemType.gName);
+          }
+        });
       });
-
       return typesSelected;
     }
 
@@ -404,7 +436,8 @@ angular.module("PoV")
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(place.name);
+        var content = "<p>"+ place.name + "</p>" + "<a href='#/app/search/"+place.name+"'>More infos+</a>";
+        infowindow.setContent(content);
         infowindow.open(map, this);
       });
     }
@@ -464,6 +497,19 @@ angular.module("PoV")
       });
 
       return defer.promise;
+    }
+
+
+    /**
+     * Method to save the itinary data for a user
+     */
+    function saveItinaryForUser() {
+
+      var datasearch = $scope.search;
+      datasearch['userEmail'] = user.userConnected.email;
+      datasearch['googlePlacesTypes'] = getGoogleTypesCategorieSelected();
+
+      firebase.database().ref('routes/').push(datasearch);
     }
   });
 

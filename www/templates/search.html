@@ -1,20 +1,96 @@
 <ion-view view-title="Search Informations">
-  <ion-content>
-    <form ng-submit="searchInformations()">
-      <label class="item item-input">
-        <span class="input-label">Your search :</span>
-        <input type="text" ng-model="search.word">
-      </label>
+  <p ng-show="showError" class="errorMessage">{{ errorMessage }}</p>
+  <ion-content ng-hide="showError">
 
-      <label class="item">
-        <button class="button button-block button-positive" type="submit">Search</button>
-      </label>
-    </form>
+    <div class="polaroid">
+      <img class="styleImg" src="{{ parseResult.photos[0] }}" alt="Image Not Found">
+      <div class="container">
+        <p class="align-center title">{{ parseResult.name }}</p>
+      </div>
+    </div>
+
+    <div class="container row">
+      <div class="col col-100">
+        <p class="styleAdress">{{ parseResult.location[0] }}</p>
+        <p class="styleAdress">{{ parseResult.location[1] }} {{ parseResult.location[2] }}</p>
+      </div>
+    </div>
+
+    <div class="stars ratingStarsCenter" ng-show="user.isLogin">
+      <form ng-submit="setNotation()">
+        <input class="star star-5" id="star-5" type="radio" ng-model="rating.star" value="5"/>
+        <label class="star star-5" for="star-5"></label>
+        <input class="star star-4" id="star-4" type="radio" ng-model="rating.star" value="4"/>
+        <label class="star star-4" for="star-4"></label>
+        <input class="star star-3" id="star-3" type="radio" ng-model="rating.star" value="3"/>
+        <label class="star star-3" for="star-3"></label>
+        <input class="star star-2" id="star-2" type="radio" ng-model="rating.star" value="2"/>
+        <label class="star star-2" for="star-2"></label>
+        <input class="star star-1" id="star-1" type="radio" ng-model="rating.star" value="1"/>
+        <label class="star star-1" for="star-1"></label>
+        <div class="row">
+          <div class="col col-50">
+            <button class="button button-block button-royal" type="reset">Reset</button>
+          </div>
+          <div class="col col-50">
+            <button class="button button-block button-royal" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
 
+    <div class="row">
+      <div class="col col-50">
+        <p>{{ parseResult.ratingGPlaces }} / 5 google Places</p>
+        <p>{{ parseResult.rating }} / 10 likes Foursquare</p>
+      </div>
+      <div class="col col-50 align-center">
+        <a href="http://facebook.com/{{ parseResult.contact.facebook }}"><img src="img/facebook.png"></a>
+        <a style="margin-left:2%;" href="https://twitter.com/{{ parseResult.contact.twitter }}"><img src="img/twitter.png"></a>
+        <a style="margin-left:2%;" href="https://www.instagram.com/{{ parseResult.contact.instagram }}"><img src="img/instagram.png"></a>
+      </div>
+    </div>
 
 
-
+    <div class="schedules">
+      <div class="schedulesBis">
+        <p class="align-center title underlineSchedules">Schedules : </p>
+      </div>
+      <hr/>
+      <p class="align-center boldSchedules" ng-repeat="hour in parseResult.openingHours"> {{ hour }}</p>
+      <hr/>
+    </div>
+    <div class="styleImgFour">
+      <div class="row">
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[1] }}"><img src="{{ parseResult.photos[1] }}"></a>
+        </div>
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[2] }}"><img src="{{ parseResult.photos[2] }}"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[3] }}"><img src="{{ parseResult.photos[3] }}"></a>
+        </div>
+        <div class="col col-50">
+          <a href="{{ parseResult.photos[4] }}"><img src="{{ parseResult.photos[4] }}"></a>
+        </div>
+      </div>
+    </div>
+    <div class="styleReviews" ng-repeat="review in parseResult.reviews">
+      <div class="row">
+        <div class="col col-50">
+          <a href=""><img class="styleImgProfil" src="{{ review.profile_photo_url }}"></a>
+        </div>
+        <div class="col col-50">
+          <p class="colorPoV">{{ review.author_name }}</p>
+          <p>{{ review.rating }} / 5</p>
+        </div>
+      </div>
+      <p>{{ review.text }}</p>
+    </div>
   </ion-content>
 </ion-view>
 

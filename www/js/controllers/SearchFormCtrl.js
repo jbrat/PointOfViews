@@ -13,7 +13,7 @@ angular.module("PoV")
       if($scope.search.word == '') {
         $scope.errorMessage = "You need to enter a value";
       } else {
-        $state.go('app.search', {textSearch: $scope.search.word});
+        $state.go('menu.search', {textSearch: $scope.search.word});
       }
     }
 

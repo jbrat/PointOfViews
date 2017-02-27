@@ -7,12 +7,19 @@ angular.module('PoV.routes', [])
 
     .state('app', {
       url: '/app',
-      abstract: true,
-      templateUrl: 'templates/menu.html',
+      templateUrl: 'templates/mainLogin.html',//menu
       controller: 'AppCtrl'
     })
 
-    .state('app.home', {
+    //app
+    .state('menu', {
+      url: '/menu',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'MenuCtrl'
+    })
+
+    .state('menu.home', {
       url: '/home',
       views: {
         'menuContent': {
@@ -22,7 +29,7 @@ angular.module('PoV.routes', [])
       }
     })
 
-    .state('app.login', {
+    .state('menu.login', {
       url: '/login',
       views: {
         'menuContent': {
@@ -32,7 +39,7 @@ angular.module('PoV.routes', [])
       }
     })
 
-    .state('app.register', {
+    .state('menu.register', {
       url: '/register',
       views: {
         'menuContent': {
@@ -42,7 +49,7 @@ angular.module('PoV.routes', [])
       }
     })
 
-    .state('app.forgotPassword', {
+    .state('menu.forgotPassword', {
       url: '/forgotPassword',
       views: {
         'menuContent': {
@@ -52,7 +59,7 @@ angular.module('PoV.routes', [])
       }
     })
 
-    .state('app.profil', {
+    .state('menu.profil', {
       url: '/profil',
       views: {
         'menuContent': {
@@ -61,7 +68,8 @@ angular.module('PoV.routes', [])
         }
       }
     })
-    .state('app.searchForm', {
+
+    .state('menu.searchForm', {
       url: '/searchForm',
       views: {
         'menuContent': {
@@ -70,16 +78,18 @@ angular.module('PoV.routes', [])
         }
       }
     })
-    .state('app.search', {
-      url: '/search/:textSearch',
-      views: {
+
+    .state('menu.search', {
+          url: '/search',
+        views: {
         'menuContent': {
           templateUrl: 'templates/search.html',
           controller: 'SearchCtrl'
         }
       }
     })
-    .state('app.research', {
+
+    .state('menu.research', {
           url: '/research',
           views: {
             'menuContent': {
@@ -88,7 +98,7 @@ angular.module('PoV.routes', [])
             }
           }
     })
-    .state('app.geoloc', {
+    .state('menu.geoloc', {
       url: '/geoloc',
       views: {
         'menuContent': {
@@ -99,5 +109,5 @@ angular.module('PoV.routes', [])
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app');
 });

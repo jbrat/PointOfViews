@@ -5,7 +5,7 @@ angular.module('PoV')
     star: null
   };
   $scope.user = user;
-  $scope.showError = true;
+  $scope.showError = false;
   $scope.parseResult = [];
   $http.get(
     "https://api.foursquare.com/v2/venues/explore/?near=" +
@@ -73,7 +73,7 @@ angular.module('PoV')
       }
     });
   }).error(function (data) {
-    console.log("test");
+    console.log(data);
     $scope.showError = true;
     $scope.errorMessage = "Can't load any places for this research, please try again";
     $state.go($state.current, {}, {reload: true});

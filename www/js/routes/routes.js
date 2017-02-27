@@ -80,7 +80,7 @@ angular.module('PoV.routes', [])
     })
 
     .state('menu.search', {
-          url: '/search',
+          url: '/search/:textSearch',
         views: {
         'menuContent': {
           templateUrl: 'templates/search.html',

@@ -28,11 +28,13 @@ angular.module("PoV")
       })
     }
 
+
     $scope.checkHistory = function() {
         }
 
-    
+
         $scope.checkLikes = function() {
         }
+
 
   });

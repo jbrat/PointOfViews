@@ -8,15 +8,19 @@
             <img src="../img/text_introduction.png"/>
           </div>
           <div class="sizeDivButton">
-            <button id="colorGmail" class="item button button-block button-assertive" type="submit" ng-click="gmailAuth()"><img class="imageStyle" src="../img/logoGmail.png"/>&nbsp;&nbsp;Gmail</button>
+            <button id="colorGmail" class="item button button-block button-assertive" type="submit" ng-click="gmailAuth()"><img src="../img/logoGmail.png"/>&nbsp;&nbsp;Gmail</button>
           </div>
           <div class="sizeDivButton">
-            <button id="colorFacebook" class="button button-block button-positive" type="submit" ng-click="facebookAuth()"><img class="imageStyle" src="../img/logoFacebook.png"/>&nbsp;&nbsp;Facebook</button><br/>
+            <button id="colorFacebook" class="button button-block button-positive" type="submit" ng-click="facebookAuth()"><img src="../img/logoFacebook.ico"/>&nbsp;&nbsp;Facebook</button><br/>
           </div>
           <div class="homeLoginSignIn">
             <a class="button button-positive buttonHomeLogin" ng-hide="user.isLogin" href="#/menu/login">Login</a>
             <a class="button button-positive buttonHomeRegister" ng-hide="user.isLogin" href="#/menu/register">Sign in</a>
           </div>
+          <br/><br/>
+          <p id="linkForget">
+            <a id="linkForgetP" ng-click="forgotPassword()">Forgot password</a>
+          </p>
 
         </ion-content>
       </ion-view>

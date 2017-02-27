@@ -24,7 +24,7 @@
   color: white;
   text-align: center;
   font-size:18px;
-  margin-top: 40%;
+  margin-top: 10%;
 
 }
 
@@ -104,11 +104,11 @@
 }
 
 #linkForgetP {
-  color: #660099;
+  color: white;
 }
 
 #linkForget{
-  color: #660099;
+  color: white;
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
@@ -120,8 +120,8 @@
 }
 
 .imageStyle {
-  width: 10%;
-  height: 10%;
+  width: 1%;
+  height: 1%;
   padding-top: 2%;
 }
 

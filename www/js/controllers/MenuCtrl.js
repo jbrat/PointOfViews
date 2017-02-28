@@ -16,7 +16,7 @@ angular.module("PoV")
 
 
 
-              $state.go('menu.home', {reload: true});
+              $state.go('app', {reload: true});
             })
           });
         }

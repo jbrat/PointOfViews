@@ -29,6 +29,12 @@ angular.module('PoV.routes', [])
       }
     })
 
+    .state('login',{
+      url:'/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
+
     .state('menu.login', {
       url: '/login',
       views: {
@@ -37,6 +43,12 @@ angular.module('PoV.routes', [])
           controller: 'LoginCtrl'
         }
       }
+    })
+
+    .state('register',{
+      url:'/register',
+      templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
     })
 
     .state('menu.register', {

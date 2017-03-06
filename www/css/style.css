@@ -127,6 +127,7 @@
 
 #colorGmail {
   background-color: #ec0c0c;
+  padding-left: 2%;
 }
 
 .textStyleViolet {
@@ -160,6 +161,10 @@
   margin-left: 2%;
 }
 
+.sizeDivGmailFb{
+  padding-left: 14%;
+  padding-right: 14%;
+}
 
 .sizeDivButton{
   padding-left: 10%;

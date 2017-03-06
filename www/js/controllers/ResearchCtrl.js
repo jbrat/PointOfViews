@@ -436,7 +436,7 @@ angular.module("PoV")
       });
 
       google.maps.event.addListener(marker, 'click', function () {
-        var content = "<p>"+ place.name + "</p>" + "<a href='#/app/search/"+place.name+"'>More infos+</a>";
+        var content = "<p>"+ place.name + "</p>" + "<a href='#/menu/search/"+place.name+"'>More infos+</a>";
         infowindow.setContent(content);
         infowindow.open(map, this);
       });

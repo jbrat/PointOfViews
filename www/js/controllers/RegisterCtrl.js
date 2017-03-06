@@ -29,7 +29,7 @@ angular.module('PoV')
             user.email = email;
 
             $scope.errorMessage = "Your account have been created correctly";
-            $state.go('app.login');
+            $state.go('login');
           })
           .catch(function (error) {
             var errorCode = error.code;

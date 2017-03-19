@@ -35,33 +35,13 @@ angular.module('PoV.routes', [])
       controller: 'LoginCtrl'
     })
 
-    .state('menu.login', {
-      url: '/login',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
-        }
-      }
-    })
-
     .state('register',{
       url:'/register',
       templateUrl: 'templates/register.html',
       controller: 'RegisterCtrl'
     })
 
-    .state('menu.register', {
-      url: '/register',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/register.html',
-          controller: 'RegisterCtrl'
-        }
-      }
-    })
-
-    .state('menu.forgotPassword', {
+    .state('forgotPassword', {
       url: '/forgotPassword',
       views: {
         'menuContent': {

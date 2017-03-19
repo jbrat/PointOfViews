@@ -19,8 +19,8 @@ angular.module("PoV")
             //now you can clear history or goto another state if you need
             $ionicHistory.clearHistory();
             $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
-            $state.go('menu.home', {reload: true});
 
+            $state.go('menu.home', {reload: true});
           });
         })
         .catch(function(error) {
@@ -41,7 +41,7 @@ angular.module("PoV")
     }
 
     $scope.forgotPassword = function() {
-      $state.go('menu.forgotPassword');
+      $state.go('forgotPassword');
     }
 
     $scope.submitNewPassword = function() {
@@ -103,6 +103,7 @@ angular.module("PoV")
         } else {
           $scope.errorMessage = errorCode;
         }
+
         $state.go($state.current, {}, {reload: true});
       });
     }
@@ -124,7 +125,7 @@ angular.module("PoV")
           $ionicHistory.clearHistory();
           $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
 
-          $state.go('app.home', {reload: true});
+          $state.go('menu.home', {reload: true});
         });
       })
       .catch(function(error) {
@@ -142,10 +143,8 @@ angular.module("PoV")
         } else {
           $scope.errorMessage = errorCode;
         }
+
         $state.go($state.current, {}, {reload: true});
-
-
       });
     }
-
   });

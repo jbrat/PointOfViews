@@ -3,7 +3,7 @@
  */
 angular.module("PoV")
   .controller('LoginCtrl', function($scope, $state, $ionicHistory, FirebaseInstance, user) {
-
+    
     $scope.user = {
       email: "",
       password : ""

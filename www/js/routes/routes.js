@@ -43,12 +43,8 @@ angular.module('PoV.routes', [])
 
     .state('forgotPassword', {
       url: '/forgotPassword',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/forgotPassword.html',
-          controller: 'LoginCtrl'
-        }
-      }
+      templateUrl: 'templates/forgotPassword.html',
+      controller: 'LoginCtrl'
     })
 
     .state('menu.profil', {

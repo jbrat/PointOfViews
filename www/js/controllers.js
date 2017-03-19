@@ -30,7 +30,7 @@ angular.module('PoV.controllers', [])
     };
 
     $scope.forgotPassword = function() {
-      $state.go('forgotPassword');
+      $state.go("forgotPassword", {reload:true});
     }
 
     $scope.facebookAuth = function() {
@@ -109,12 +109,10 @@ angular.module('PoV.controllers', [])
         } else {
           $scope.errorMessage = errorCode;
         }
+
         $state.go($state.current, {}, {reload: true});
-
-
       });
     }
-
   });
 
 
